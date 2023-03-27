@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcf3c698bf8c6d7266c945a3ed9812a1",
+    "content-hash": "37e4c2e4a147736ffc0a8090af7dcfd4",
     "packages": [
         {
             "name": "brick/math",
@@ -5410,6 +5410,51 @@
     ],
     "packages-dev": [
         {
+            "name": "ajcastro/scribe-tdd",
+            "version": "dev-phpunit10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/keatliang2005/scribe-tdd.git",
+                "reference": "04955e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/keatliang2005/scribe-tdd/zipball/04955e6",
+                "reference": "04955e6",
+                "shasum": ""
+            },
+            "require": {
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AjCastro\\ScribeTdd\\ScribeTddServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AjCastro\\ScribeTdd\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ajcastro",
+                    "email": "ajcastro29@gmail.com"
+                }
+            ],
+            "description": "Scribe's test-driven documentation approach.",
+            "support": {
+                "source": "https://github.com/keatliang2005/scribe-tdd/tree/phpunit10"
+            },
+            "time": "2023-02-17T07:03:15+00:00"
+        },
+        {
             "name": "cmgmyr/phploc",
             "version": "8.0.2",
             "source": {
@@ -10224,7 +10269,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ajcastro/scribe-tdd": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
