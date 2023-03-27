@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn(): \Illuminate\View\View => view('welcome'));
+Route::get('/', fn (): \Illuminate\View\View => view('welcome'));
