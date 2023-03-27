@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('api/v1')
     ->name('api.')
     ->group(
-    function () {
-        Route::post('/login', LoginController::class)->name('login');
-    }
-);
+        function (): void {
+            Route::post('/login', LoginController::class)->name('login');
+        }
+    );
