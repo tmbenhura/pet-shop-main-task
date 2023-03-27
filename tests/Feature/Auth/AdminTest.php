@@ -52,4 +52,27 @@ class AdminTest extends TestCase
             ]
         );
     }
+
+    /**
+     * Login fails with incorrect password.
+     */
+    public function test_login_fails_with_incorrect_password(): void
+    {
+        $user = User::factory()->create(
+            ['is_admin' => true]
+        );
+
+        $response = $this->post(
+            route('api.login'),
+            ['email' => $user->email, 'password' => 'rum']
+        );
+
+        $response->assertStatus(401);
+        $response->assertJson(
+            [
+                'success' => false,
+                'message' => 'Failed to authenticate user'
+            ]
+        );
+    }
 }
