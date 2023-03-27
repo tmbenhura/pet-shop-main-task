@@ -24,11 +24,9 @@ class UuidTraitTest extends TestCase
      *
      * @dataProvider modelsWithUuid
      */
-    public function test_uuid_models_use_uuid_trait($modelClass): void
+    public function test_uuid_models_use_uuid_trait(string $modelClass): void
     {
-        $model = $modelClass::factory()->create();
-
-        $this->assertTrue(in_array(HasUuid::class, class_uses_recursive($model::class)));
+        $this->assertTrue(in_array(HasUuid::class, class_uses_recursive($modelClass)));
     }
 
     /**
@@ -36,7 +34,7 @@ class UuidTraitTest extends TestCase
      *
      * @dataProvider modelsWithUuid
      */
-    public function test_uuid_models_generate_uuid($modelClass): void
+    public function test_uuid_models_generate_uuid(string $modelClass): void
     {
         $model = $modelClass::factory()->create();
 
@@ -49,7 +47,7 @@ class UuidTraitTest extends TestCase
      *
      * @dataProvider modelsWithUuid
      */
-    public function test_uuid_models_do_not_overwrite_explicit_uuid($modelClass): void
+    public function test_uuid_models_do_not_overwrite_explicit_uuid(string $modelClass): void
     {
         $uuid = Str::uuid();
         $model = $modelClass::factory()->create(
