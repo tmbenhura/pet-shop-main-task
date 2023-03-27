@@ -53,6 +53,7 @@ return [
     'exclude' => [
         'app/Exceptions/Handler.php',
         'app/Http/Kernel.php',
+        'app/Middleware',
         'app/Providers',
     ],
 
