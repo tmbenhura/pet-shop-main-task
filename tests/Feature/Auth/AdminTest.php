@@ -29,4 +29,27 @@ class AdminTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * Login fails with incorrect email.
+     */
+    public function test_login_fails_with_incorrect_email(): void
+    {
+        $user = User::factory()->create(
+            ['is_admin' => true]
+        );
+
+        $response = $this->post(
+            route('api.login'),
+            ['email' => $user->email.'.com', 'password' => 'password']
+        );
+
+        $response->assertStatus(401);
+        $response->assertJson(
+            [
+                'success' => false,
+                'message' => 'Failed to authenticate user'
+            ]
+        );
+    }
 }
