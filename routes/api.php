@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', fn (Request $request): ?\App\Models\User => $request->user());
+Route::prefix('api/v1')
+    ->name('api.')
+    ->group(
+    function () {
+        Route::post('/login', LoginController::class)->name('login');
+    }
+);
