@@ -47,15 +47,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public static function boot(): void
-    {
-        parent::boot();
-
-        self::creating(
-            function (self $model): void {
-                $model->uuid = Str::uuid()->toString();
-            }
-        );
-    }
 }

@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -27,16 +26,5 @@ class UserTest extends TestCase
         $this->assertNotEmpty($user->phone_number);
         $this->assertNotNull($user->is_marketing);
         $this->assertNotEmpty($user->last_login_at);
-    }
-
-    /**
-     * User model generates uuid.
-     */
-    public function test_model_generates_uuid(): void
-    {
-        $user = User::factory()->create();
-
-        $this->assertNotEmpty($user->uuid);
-        $this->assertTrue(Str::isUuid($user->uuid));
     }
 }
