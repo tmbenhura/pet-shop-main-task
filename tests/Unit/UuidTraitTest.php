@@ -32,7 +32,7 @@ class UuidTraitTest extends TestCase
     }
 
     /**
-     *  Uuid models generate uuid.
+     * Uuid models generate uuid.
      *
      * @dataProvider modelsWithUuid
      */
@@ -42,5 +42,20 @@ class UuidTraitTest extends TestCase
 
         $this->assertNotEmpty($model->uuid);
         $this->assertTrue(Str::isUuid($model->uuid));
+    }
+
+    /**
+     * Uuid models do not overwrite explicit uuid.
+     *
+     * @dataProvider modelsWithUuid
+     */
+    public function test_uuid_models_do_not_overwrite_explicit_uuid($modelClass): void
+    {
+        $uuid = Str::uuid();
+        $model = $modelClass::factory()->create(
+            ['uuid' => $uuid]
+        );
+
+        $this->assertEquals($model->uuid, $model->uuid);
     }
 }

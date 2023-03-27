@@ -10,6 +10,10 @@ trait HasUuid
     {
         self::creating(
             function (self $model): void {
+                if ($model->uuid) {
+                    return;
+                }
+
                 $model->uuid = Str::uuid()->toString();
             }
         );
