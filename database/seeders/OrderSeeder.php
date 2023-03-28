@@ -3,19 +3,22 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class OrderSeeder extends Seeder
 {
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        $this->call(
+        $users = User::factory()->times(10)->create(
             [
-                AdminUserSeeder::class,
-                OrderSeeder::class,
+                'is_admin' => false,
+                'password' => Hash::make('userpassword'),
             ]
         );
     }
