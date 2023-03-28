@@ -19,3 +19,5 @@ yarn-error.log
 /.vscode
 /.scribe
 /storage/scribe-tdd
+/*.pem
+/*.pem.pub
