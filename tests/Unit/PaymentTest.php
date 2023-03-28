@@ -23,4 +23,18 @@ class PaymentTest extends TestCase
         $this->assertNotEmpty($payment->type);
         $this->assertNotEmpty($payment->details);
     }
+
+    /**
+     * Payment types are unique.
+     */
+    public function test_payment_types_are_unique(): void
+    {
+        try {
+            Payment::factory()->create(['type' => 'credit_card']);
+            Payment::factory()->create(['type' => 'credit_card']);
+        } catch (Exception $e) {
+        }
+
+        $this->assertDatabaseCount('payments', 1);
+    }
 }
