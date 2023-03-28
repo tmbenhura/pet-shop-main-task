@@ -105,7 +105,7 @@ class AuthenticateRoleMiddlewareTest extends TestCase
         );
 
         $response = $this->postJson(
-            route('api.admin.login'),
+            route('api.user.login'),
             ['email' => $user->email, 'password' => 'password']
         );
 
@@ -124,7 +124,7 @@ class AuthenticateRoleMiddlewareTest extends TestCase
                 'errors' => [
                     [
                         'status' => '401',
-                        'title' => 'Unauthorised'
+                        'title' => 'Unauthorized'
                     ]
                 ]
             ]
