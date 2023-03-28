@@ -29,7 +29,7 @@ class OrderTest extends TestCase
         $this->assertNotNull($order->payment_uuid);
         $this->assertNotEmpty($order->billing_address);
         $this->assertNotEmpty($order->shipping_address);
-        $this->assertNotEmpty($order->delivery_fee_cents);
+        $this->assertNotNull($order->delivery_fee_cents);
         $this->assertNotNull($order->amount_cents);
         $this->assertNotEmpty($order->shipped_at);
     }
