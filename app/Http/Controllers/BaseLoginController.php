@@ -8,7 +8,6 @@ use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use App\Contracts\JwtTokenManager;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -17,7 +16,7 @@ abstract class BaseLoginController extends Controller
     /**
      * Check user existence
      */
-    abstract function userExists(Request $request): bool;
+    abstract public function userExists(Request $request): bool;
 
     /**
      * Login into api
