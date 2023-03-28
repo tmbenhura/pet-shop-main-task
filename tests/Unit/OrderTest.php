@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use App\Models\Order;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -28,5 +30,20 @@ class OrderTest extends TestCase
         $this->assertNotEmpty($order->delivery_fee_cents);
         $this->assertNotNull($order->amount_cents);
         $this->assertNotEmpty($order->shipped_at);
+    }
+
+    /**
+     * Order has user relationship.
+     */
+    public function test_order_has_user_relationship(): void
+    {
+        $order = Order::factory()->create();
+
+        $this->assertTrue($order->user() instanceof BelongsTo);
+
+        $user = User::factory()->create();
+        $order->user()->associate($user);
+
+        $this->assertEquals($user->id, $order->user_id);
     }
 }
