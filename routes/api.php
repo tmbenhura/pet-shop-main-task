@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\V1\LoginController;
+use App\Http\Controllers\Api\V1\Admin\LoginController as AdminLoginController;
+use App\Http\Controllers\Api\V1\User\LoginController as UserLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,14 @@ Route::prefix('api/v1/admin')
     ->name('api.admin.')
     ->group(
         function (): void {
-            Route::post('/login', LoginController::class)->name('login');
+            Route::post('/login', AdminLoginController::class)->name('login');
+        }
+    );
+
+Route::prefix('api/v1/user')
+    ->name('api.user.')
+    ->group(
+        function (): void {
+            Route::post('/login', UserLoginController::class)->name('login');
         }
     );
