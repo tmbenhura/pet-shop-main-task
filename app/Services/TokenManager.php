@@ -6,12 +6,31 @@ namespace App\Services;
 
 use App\Contracts\JwtTokenManager;
 use DateTimeImmutable;
+use Lcobucci\Clock\SystemClock;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
+use Lcobucci\JWT\Validation\Constraint;
 
 class TokenManager implements JwtTokenManager
 {
+    private $_configuration;
+
+    public function __construct()
+    {
+        $this->_configuration = Configuration::forAsymmetricSigner(
+            new Sha256(),
+            InMemory::file(base_path(config('jwt.signing_key_filename'))),
+            InMemory::plainText(config('jwt.verification_key'))
+        );
+
+        $this->_configuration->setValidationConstraints(
+            new Constraint\SignedWith($this->_configuration->signer(), $this->_configuration->signingKey()),
+            new Constraint\StrictValidAt(SystemClock::fromUTC()),
+            new Constraint\IssuedBy(config('app.url'))
+        );
+    }
+
     /**
      * Issue token
      */
@@ -20,14 +39,8 @@ class TokenManager implements JwtTokenManager
         DateTimeImmutable $expiryDate,
         array $claims
     ): string {
-        $configuration = Configuration::forAsymmetricSigner(
-            new Sha256(),
-            InMemory::file(base_path(config('jwt.signing_key_filename'))),
-            InMemory::plainText(config('jwt.verification_key'))
-        );
-
         $now = new DateTimeImmutable();
-        $builder = $configuration->builder()
+        $builder = $this->_configuration->builder()
             ->issuedBy($issuer)
             ->issuedAt($now)
             ->canOnlyBeUsedAfter($now)
@@ -37,7 +50,7 @@ class TokenManager implements JwtTokenManager
             $builder = $builder->withClaim($claim, $value);
         }
 
-        return $builder->getToken($configuration->signer(), $configuration->signingKey())
+        return $builder->getToken($this->_configuration->signer(), $this->_configuration->signingKey())
             ->toString();
     }
 
@@ -46,6 +59,12 @@ class TokenManager implements JwtTokenManager
      */
     public function getTokenClaim(string $token, string $claim): mixed
     {
-        return null;
+        try {
+            $token = $this->_configuration->parser()->parse($token);
+        } catch (Exception $e) {
+            return null;
+        }
+
+        return $token->claims()->get($claim);
     }
 }

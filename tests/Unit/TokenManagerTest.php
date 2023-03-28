@@ -50,4 +50,26 @@ class TokenManagerTest extends TestCase
         $this->assertEquals(1, $claims->get('uid'));
         $this->assertEquals(['admin'], $claims->get('roles'));
     }
+
+    /**
+     * Token manager can get token claims.
+     */
+    public function test_token_manager_can_get_token_claims(): void
+    {
+        $expiryDate = CarbonImmutable::now()->addDays(5);
+        /** @var TokenManager */
+        $tokenManager = app(TokenManager::class);
+        $token = $tokenManager->issueToken(
+            'http://jwt.test',
+            $expiryDate,
+            [
+                'uid' => 1,
+                'roles' => ['admin'],
+            ]
+        );
+
+        $this->assertEquals('http://jwt.test', $tokenManager->getTokenClaim($token, 'iss'));
+        $this->assertEquals(1, $tokenManager->getTokenClaim($token, 'uid'));
+        $this->assertEquals(['admin'], $tokenManager->getTokenClaim($token, 'roles'));
+    }
 }
