@@ -31,7 +31,8 @@ class OrderStatusTest extends TestCase
         try {
             OrderStatus::factory()->create(['title' => 'open']);
             OrderStatus::factory()->create(['title' => 'open']);
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         $this->assertDatabaseCount('order_statuses', 1);
     }

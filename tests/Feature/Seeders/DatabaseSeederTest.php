@@ -4,9 +4,7 @@ namespace Tests\Feature\Seeders;
 
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
-use Database\Seeders\OrderSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class DatabaseSeederTest extends TestCase
