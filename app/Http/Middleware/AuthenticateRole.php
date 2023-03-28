@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Exception;
 use Illuminate\Http\Request;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
@@ -46,9 +47,22 @@ class AuthenticateRole
             new Constraint\IssuedBy(config('app.url'))
         );
 
-        $token = $configuration->parser()->parse($request->bearerToken());
-        $claimedRoles = $token->claims()->get('roles');
-
+        try {
+            $token = $configuration->parser()->parse($request->bearerToken());
+            $claimedRoles = $token->claims()->get('roles');
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'errors' => [
+                        [
+                            'status' => '401',
+                            'title' => 'Unauthorized',
+                        ]
+                    ]
+                ],
+                401
+            );
+        }
         if (!in_array($role, $claimedRoles)) {
             return response()->json(
                 [

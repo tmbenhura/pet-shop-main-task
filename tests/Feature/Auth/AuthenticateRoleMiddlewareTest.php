@@ -46,6 +46,24 @@ class AuthenticateRoleMiddlewareTest extends TestCase
     }
 
     /**
+     * Authenticate role middleware disallows invalid tokens.
+     */
+    public function test_authenticate_role_middleware_disallows_invalid_tokens(): void
+    {
+        Route::middleware('auth.role:admin')->get(
+            '/test',
+            fn () => ['success' => true]
+        );
+
+        $response = $this->withHeader('Authorization', 'Bearer INVALID')
+            ->getJson(
+                '/test',
+            );
+
+        $response->assertStatus(401);
+    }
+
+    /**
      * Authenticate role middleware disallows guests.
      */
     public function test_authenticate_role_middleware_disallows_guests(): void
