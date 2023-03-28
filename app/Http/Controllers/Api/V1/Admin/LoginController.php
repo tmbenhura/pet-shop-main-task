@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
+use App\Contracts\JwtTokenManager;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use DateTimeImmutable;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Lcobucci\JWT\Configuration;
-use Lcobucci\JWT\Signer\Key\InMemory;
-use Lcobucci\JWT\Signer\Rsa\Sha256;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LoginController extends Controller
@@ -51,35 +49,21 @@ class LoginController extends Controller
             );
         }
 
-        $token = $this->createTokenForUser($user);
+        $token = app(JwtTokenManager::class)->issueToken(
+            config('app.url'),
+            CarbonImmutable::now()->addHours(1),
+            [
+                'user_uuid' => $user->uuid,
+                'roles' => ['admin'],
+            ]
+        );
 
         return response()->json(
             [
                 'data' => [
-                    'token' => $token,
+                    'token' => $token
                 ]
             ]
         );
-    }
-
-    public function createTokenForUser(User $user): string
-    {
-        $configuration = Configuration::forAsymmetricSigner(
-            new Sha256(),
-            InMemory::file(base_path(config('jwt.signing_key_filename'))),
-            InMemory::plainText(config('jwt.verification_key'))
-        );
-
-        $now = new DateTimeImmutable();
-        $token = $configuration->builder()
-                ->issuedBy(config('app.url'))
-                ->issuedAt($now)
-                ->canOnlyBeUsedAfter($now)
-                ->expiresAt($now->modify('+1 hour'))
-                ->withClaim('user_uuid', $user->uuid)
-                ->withClaim('roles', ['admin'])
-                ->getToken($configuration->signer(), $configuration->signingKey());
-
-        return $token->toString();
     }
 }
