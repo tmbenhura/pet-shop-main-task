@@ -34,7 +34,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         Auth::viaRequest(
             'jwt',
-            function (Request $request) {
+            function (Request $request): ?User {
+                if (!$request->bearerToken()) {
+                    return null;
+                }
+
                 $configuration = Configuration::forAsymmetricSigner(
                     new Sha256(),
                     InMemory::file(base_path(config('jwt.signing_key_filename'))),

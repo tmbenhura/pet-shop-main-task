@@ -44,4 +44,21 @@ class JwtGuardTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson(['user' => $user->id]);
     }
+
+    /**
+     * Api guard rejects guests.
+     */
+    public function test_api_guard_rejects_guests(): void
+    {
+        Route::middleware('auth:api')->get(
+            '/test',
+            fn () => ['user' => auth()->id()]
+        );
+
+        $response = $this->getJson(
+            '/test',
+        );
+
+        $response->assertStatus(401);
+    }
 }
