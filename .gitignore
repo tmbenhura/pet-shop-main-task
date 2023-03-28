@@ -21,3 +21,4 @@ yarn-error.log
 /storage/scribe-tdd
 /*.pem
 /*.pem.pub
+/.php-cs-fixer.cache
