@@ -21,6 +21,7 @@
     },
     "require-dev": {
         "ajcastro/scribe-tdd": "dev-phpunit10#04955e6",
+        "barryvdh/laravel-ide-helper": "^2.13",
         "fakerphp/faker": "^1.9.1",
         "knuckleswtf/scribe": "^4.17",
         "laravel/pint": "^1.0",
