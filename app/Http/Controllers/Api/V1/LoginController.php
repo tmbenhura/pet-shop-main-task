@@ -56,8 +56,8 @@ class LoginController extends Controller
     {
         $configuration = Configuration::forAsymmetricSigner(
             new Sha256(),
-            InMemory::file(base_path('file.pem')),
-            InMemory::plainText('mBC5v1sOKVvbdEitdSBenu59nfNfhwkedkJVNabosTw=')
+            InMemory::file(base_path(config('jwt.signing_key_filename'))),
+            InMemory::plainText(config('jwt.verification_key'))
         );
 
         $now = new DateTimeImmutable();
