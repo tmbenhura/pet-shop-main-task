@@ -94,8 +94,7 @@ class User extends Authenticatable
     protected function roles(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes)
-                => $attributes['is_admin'] ? ['admin'] : ['user'],
+            get: fn (mixed $value, array $attributes) => $attributes['is_admin'] ? ['admin'] : ['user'],
         );
     }
 }
