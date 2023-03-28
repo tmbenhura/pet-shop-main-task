@@ -31,6 +31,9 @@ return new class () extends Migration {
                 $table->foreign('order_status_uuid')->references('uuid')->on('order_statuses');
                 $table->foreign('payment_uuid')->references('uuid')->on('payments');
             }
+
+            $table->index(['uuid'], 'INX_ORDERS_UUID');
+            $table->index(['uuid', 'user_id', 'order_status_uuid', 'payment_uuid'], 'INX_ORDERS_SELECTION');
         });
     }
 

@@ -18,6 +18,9 @@ return new class () extends Migration {
             $table->string('type')->unique();
             $table->json('details');
             $table->timestamps();
+
+            $table->index(['uuid'], 'INX_PAYMENTS_UUID');
+            $table->index(['uuid', 'title'], 'INX_PAYMENTS_SELECTION');
         });
     }
 

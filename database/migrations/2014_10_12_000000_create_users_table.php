@@ -24,6 +24,9 @@ return new class () extends Migration {
             $table->boolean('is_marketing');
             $table->timestamp('last_login_at')->nullable();
             $table->timestamps();
+
+            $table->index(['uuid'], 'INX_USERS_UUID');
+            $table->index(['email', 'is_admin'], 'INX_USERS_AUTH');
         });
     }
 
