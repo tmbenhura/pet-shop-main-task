@@ -10,6 +10,8 @@ interface JwtTokenManager
 {
     /**
      * Issue token
+     *
+     * @param $claims array<int, array<string, mixed>>
      */
     public function issueToken(
         string $issuer,

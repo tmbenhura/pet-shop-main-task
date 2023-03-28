@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Contracts\JwtTokenManager;
 use Closure;
 use Illuminate\Http\Request;
+use App\Contracts\JwtTokenManager;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthenticateRole
@@ -23,8 +23,8 @@ class AuthenticateRole
                         [
                             'status' => '401',
                             'title' => 'Unauthorized',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 401
             );
@@ -39,8 +39,8 @@ class AuthenticateRole
                         [
                             'status' => '401',
                             'title' => 'Unauthorized',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 401
             );
@@ -53,8 +53,8 @@ class AuthenticateRole
                         [
                             'status' => '401',
                             'title' => 'Unauthorized',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 401
             );

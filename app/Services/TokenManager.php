@@ -4,29 +4,29 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Contracts\JwtTokenManager;
-use DateTimeImmutable;
 use Exception;
+use DateTimeImmutable;
 use Lcobucci\Clock\SystemClock;
 use Lcobucci\JWT\Configuration;
-use Lcobucci\JWT\Signer\Key\InMemory;
+use App\Contracts\JwtTokenManager;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
+use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Validation\Constraint;
 
 class TokenManager implements JwtTokenManager
 {
-    private $_configuration;
+    private Configuration $configuration;
 
     public function __construct()
     {
-        $this->_configuration = Configuration::forAsymmetricSigner(
+        $this->configuration = Configuration::forAsymmetricSigner(
             new Sha256(),
             InMemory::file(base_path(config('jwt.signing_key_filename'))),
             InMemory::plainText(config('jwt.verification_key'))
         );
 
-        $this->_configuration->setValidationConstraints(
-            new Constraint\SignedWith($this->_configuration->signer(), $this->_configuration->signingKey()),
+        $this->configuration->setValidationConstraints(
+            new Constraint\SignedWith($this->configuration->signer(), $this->configuration->signingKey()),
             new Constraint\StrictValidAt(SystemClock::fromUTC()),
             new Constraint\IssuedBy(config('app.url'))
         );
@@ -34,6 +34,8 @@ class TokenManager implements JwtTokenManager
 
     /**
      * Issue token
+     *
+     * @param $claims array<int, array<string, mixed>>
      */
     public function issueToken(
         string $issuer,
@@ -41,7 +43,7 @@ class TokenManager implements JwtTokenManager
         array $claims
     ): string {
         $now = new DateTimeImmutable();
-        $builder = $this->_configuration->builder()
+        $builder = $this->configuration->builder()
             ->issuedBy($issuer)
             ->issuedAt($now)
             ->canOnlyBeUsedAfter($now)
@@ -51,7 +53,7 @@ class TokenManager implements JwtTokenManager
             $builder = $builder->withClaim($claim, $value);
         }
 
-        return $builder->getToken($this->_configuration->signer(), $this->_configuration->signingKey())
+        return $builder->getToken($this->configuration->signer(), $this->configuration->signingKey())
             ->toString();
     }
 
@@ -61,7 +63,7 @@ class TokenManager implements JwtTokenManager
     public function getTokenClaim(string $token, string $claim): mixed
     {
         try {
-            $token = $this->_configuration->parser()->parse($token);
+            $token = $this->configuration->parser()->parse($token);
         } catch (Exception $e) {
             return null;
         }

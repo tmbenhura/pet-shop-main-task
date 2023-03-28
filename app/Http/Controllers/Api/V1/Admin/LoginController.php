@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\Contracts\JwtTokenManager;
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
+use App\Contracts\JwtTokenManager;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -26,8 +26,8 @@ class LoginController extends Controller
                         [
                             'status' => '401',
                             'title' => 'Failed to authenticate user',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 401
             );
@@ -42,8 +42,8 @@ class LoginController extends Controller
                         [
                             'status' => '401',
                             'title' => 'Failed to authenticate user',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 401
             );
@@ -61,8 +61,8 @@ class LoginController extends Controller
         return response()->json(
             [
                 'data' => [
-                    'token' => $token
-                ]
+                    'token' => $token,
+                ],
             ]
         );
     }

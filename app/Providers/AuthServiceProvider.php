@@ -6,11 +6,11 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
-use App\Contracts\JwtTokenManager;
 use App\Models\User;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
+use App\Contracts\JwtTokenManager;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
