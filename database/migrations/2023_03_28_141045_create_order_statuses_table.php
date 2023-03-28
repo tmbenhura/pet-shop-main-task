@@ -15,7 +15,7 @@ return new class () extends Migration {
         Schema::create('order_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('uuid');
-            $table->string('title');
+            $table->string('title')->unique();
             $table->timestamps();
         });
     }
