@@ -21,7 +21,7 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request): JsonResponse
     {
-        if (!User::where('email', $request->email)->exists()) {
+        if (!User::where('email', $request->email)->where('is_admin', false)->exists()) {
             return response()->json(
                 [
                     'errors' => [

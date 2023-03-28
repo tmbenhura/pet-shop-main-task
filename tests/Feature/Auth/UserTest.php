@@ -39,6 +39,33 @@ class UserTest extends TestCase
     }
 
     /**
+     * Login fails for admins.
+     */
+    public function test_login_fails_for_admins(): void
+    {
+        $user = User::factory()->create(
+            ['is_admin' => true]
+        );
+
+        $response = $this->postJson(
+            route('api.user.login'),
+            ['email' => $user->email, 'password' => 'password']
+        );
+
+        $response->assertStatus(401);
+        $response->assertJson(
+            [
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Failed to authenticate user',
+                    ]
+                ]
+            ]
+        );
+    }
+
+    /**
      * Login fails with incorrect email.
      */
     public function test_login_fails_with_incorrect_email(): void
@@ -98,7 +125,7 @@ class UserTest extends TestCase
     public function test_login_returns_token_on_success(): void
     {
         $user = User::factory()->create(
-            ['is_admin' => true]
+            ['is_admin' => false]
         );
 
         $response = $this->postJson(
