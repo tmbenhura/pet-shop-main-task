@@ -2,14 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Contracts\JwtTokenManager;
 use Closure;
-use Exception;
 use Illuminate\Http\Request;
-use Lcobucci\JWT\Signer\Rsa\Sha256;
-use Lcobucci\JWT\Signer\Key\InMemory;
-use Lcobucci\JWT\Validation\Constraint;
-use Lcobucci\Clock\SystemClock;
-use Lcobucci\JWT\Configuration;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthenticateRole
@@ -35,22 +30,9 @@ class AuthenticateRole
             );
         }
 
-        $configuration = Configuration::forAsymmetricSigner(
-            new Sha256(),
-            InMemory::file(base_path(config('jwt.signing_key_filename'))),
-            InMemory::plainText(config('jwt.verification_key'))
-        );
+        $claimedRoles = app(JwtTokenManager::class)->getTokenClaim($request->bearerToken(), 'roles');
 
-        $configuration->setValidationConstraints(
-            new Constraint\SignedWith($configuration->signer(), $configuration->signingKey()),
-            new Constraint\StrictValidAt(SystemClock::fromUTC()),
-            new Constraint\IssuedBy(config('app.url'))
-        );
-
-        try {
-            $token = $configuration->parser()->parse($request->bearerToken());
-            $claimedRoles = $token->claims()->get('roles');
-        } catch (Exception $e) {
+        if (!$claimedRoles) {
             return response()->json(
                 [
                     'errors' => [
@@ -63,6 +45,7 @@ class AuthenticateRole
                 401
             );
         }
+
         if (!in_array($role, $claimedRoles)) {
             return response()->json(
                 [
