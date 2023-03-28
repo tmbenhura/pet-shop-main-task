@@ -53,8 +53,12 @@ class AdminTest extends TestCase
         $response->assertStatus(401);
         $response->assertJson(
             [
-                'success' => false,
-                'message' => 'Failed to authenticate user'
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Failed to authenticate user',
+                    ]
+                ]
             ]
         );
     }
@@ -76,9 +80,13 @@ class AdminTest extends TestCase
         $response->assertStatus(401);
         $response->assertJson(
             [
-                'success' => false,
-                'message' => 'Failed to authenticate user'
-            ]
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Failed to authenticate user',
+                    ]
+                ]
+            ],
         );
     }
 

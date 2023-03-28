@@ -22,8 +22,12 @@ class LoginController extends Controller
         if (!User::where('email', $request->email)->exists()) {
             return response()->json(
                 [
-                    'success' => false,
-                    'message' => 'Failed to authenticate user',
+                    'errors' => [
+                        [
+                            'status' => '401',
+                            'title' => 'Failed to authenticate user',
+                        ]
+                    ]
                 ],
                 401
             );
@@ -34,8 +38,12 @@ class LoginController extends Controller
         if (!Hash::check($request->password, $user->password)) {
             return response()->json(
                 [
-                    'success' => false,
-                    'message' => 'Failed to authenticate user',
+                    'errors' => [
+                        [
+                            'status' => '401',
+                            'title' => 'Failed to authenticate user',
+                        ]
+                    ]
                 ],
                 401
             );
