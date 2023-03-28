@@ -29,4 +29,16 @@ class UserTest extends TestCase
         $this->assertNotNull($user->is_marketing);
         $this->assertNotEmpty($user->last_login_at);
     }
+
+    /**
+     * User has roles attribute.
+     */
+    public function test_user_has_roles_attribute(): void
+    {
+        $admin = User::factory()->create(['is_admin' => true]);
+        $user = User::factory()->create(['is_admin' => false]);
+
+        $this->assertEquals(['admin'], $admin->roles);
+        $this->assertEquals(['user'], $user->roles);
+    }
 }

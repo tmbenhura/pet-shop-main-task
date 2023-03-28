@@ -8,6 +8,7 @@ namespace App\Models;
 
 use App\Traits\HasUuid;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -25,6 +26,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $phone_number
  * @property string $password
  * @property int $is_marketing
+ * @property array $roles
  * @property string|null $last_login_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -85,4 +87,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the user's roles.
+     */
+    protected function roles(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes)
+                => $attributes['is_admin'] ? ['admin'] : ['user'],
+        );
+    }
 }
