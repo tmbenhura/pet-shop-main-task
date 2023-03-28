@@ -5,6 +5,11 @@ namespace Tests\Feature\Auth;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use Lcobucci\JWT\Encoding\CannotDecodeContent;
+use Lcobucci\JWT\Encoding\JoseEncoder;
+use Lcobucci\JWT\Token\InvalidTokenStructure;
+use Lcobucci\JWT\Token\Parser;
+use Lcobucci\JWT\Token\UnsupportedHeaderFound;
 use Tests\TestCase;
 
 /**
@@ -96,5 +101,34 @@ class AdminTest extends TestCase
             fn (AssertableJson $json) =>
             $json->has('data.token')
         );
+    }
+
+    /**
+     * Admin token claims are compliant.
+     */
+    public function test_admin_token_claims_is_compliant(): void
+    {
+        $user = User::factory()->create(
+            ['is_admin' => true]
+        );
+
+        $response = $this->postJson(
+            route('api.login'),
+            ['email' => $user->email, 'password' => 'password']
+        );
+
+        $response->assertStatus(200);
+
+        $rawToken = $response->getData()->data->token;
+        $parser = new Parser(new JoseEncoder());
+        try {
+            $decodedToken = $parser->parse($rawToken);
+        } catch (CannotDecodeContent | InvalidTokenStructure | UnsupportedHeaderFound $e) {
+        }
+
+        $claims = $decodedToken->claims();
+        $this->assertEquals(config('app.url'), $claims->get('iss'));
+        $this->assertEquals($user->uuid, $claims->get('user_uuid'));
+        $this->assertEquals(['admin'], $claims->get('roles'));
     }
 }

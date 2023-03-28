@@ -66,6 +66,8 @@ class LoginController extends Controller
                 ->issuedAt($now)
                 ->canOnlyBeUsedAfter($now)
                 ->expiresAt($now->modify('+1 hour'))
+                ->withClaim('user_uuid', $user->uuid)
+                ->withClaim('roles', ['admin'])
                 ->getToken($configuration->signer(), $configuration->signingKey());
 
         return $token->toString();
