@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -45,5 +46,20 @@ class OrderTest extends TestCase
         $order->user()->associate($user);
 
         $this->assertEquals($user->id, $order->user_id);
+    }
+
+    /**
+     * Order has status relationship.
+     */
+    public function test_order_has_status_relationship(): void
+    {
+        $order = Order::factory()->create();
+
+        $this->assertTrue($order->status() instanceof BelongsTo);
+
+        $status = OrderStatus::factory()->create();
+        $order->status()->associate($status);
+
+        $this->assertEquals($status->uuid, $order->order_status_uuid);
     }
 }
