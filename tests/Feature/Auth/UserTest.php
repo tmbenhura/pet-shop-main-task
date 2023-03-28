@@ -31,4 +31,31 @@ class UserTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * Login fails with incorrect email.
+     */
+    public function test_login_fails_with_incorrect_email(): void
+    {
+        $user = User::factory()->create(
+            ['is_admin' => false]
+        );
+
+        $response = $this->postJson(
+            route('api.user.login'),
+            ['email' => $user->email.'.com', 'password' => 'password']
+        );
+
+        $response->assertStatus(401);
+        $response->assertJson(
+            [
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Failed to authenticate user',
+                    ]
+                ]
+            ]
+        );
+    }
 }
