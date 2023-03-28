@@ -29,7 +29,7 @@ class AdminTest extends TestCase
         );
 
         $response = $this->postJson(
-            route('api.login'),
+            route('api.admin.login'),
             ['email' => $user->email, 'password' => 'password']
         );
 
@@ -46,7 +46,7 @@ class AdminTest extends TestCase
         );
 
         $response = $this->postJson(
-            route('api.login'),
+            route('api.admin.login'),
             ['email' => $user->email.'.com', 'password' => 'password']
         );
 
@@ -73,7 +73,7 @@ class AdminTest extends TestCase
         );
 
         $response = $this->postJson(
-            route('api.login'),
+            route('api.admin.login'),
             ['email' => $user->email, 'password' => 'rum']
         );
 
@@ -100,7 +100,7 @@ class AdminTest extends TestCase
         );
 
         $response = $this->postJson(
-            route('api.login'),
+            route('api.admin.login'),
             ['email' => $user->email, 'password' => 'password']
         );
 
@@ -121,7 +121,7 @@ class AdminTest extends TestCase
         );
 
         $response = $this->postJson(
-            route('api.login'),
+            route('api.admin.login'),
             ['email' => $user->email, 'password' => 'password']
         );
 

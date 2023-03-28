@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('api/v1')
-    ->name('api.')
+Route::prefix('api/v1/admin')
+    ->name('api.admin.')
     ->group(
         function (): void {
             Route::post('/login', LoginController::class)->name('login');
