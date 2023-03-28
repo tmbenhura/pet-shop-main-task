@@ -58,4 +58,31 @@ class UserTest extends TestCase
             ]
         );
     }
+
+    /**
+     * Login fails with incorrect password.
+     */
+    public function test_login_fails_with_incorrect_password(): void
+    {
+        $user = User::factory()->create(
+            ['is_admin' => false]
+        );
+
+        $response = $this->postJson(
+            route('api.user.login'),
+            ['email' => $user->email, 'password' => 'rum']
+        );
+
+        $response->assertStatus(401);
+        $response->assertJson(
+            [
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Failed to authenticate user',
+                    ]
+                ]
+            ],
+        );
+    }
 }
