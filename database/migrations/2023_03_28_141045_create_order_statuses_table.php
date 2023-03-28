@@ -17,6 +17,9 @@ return new class () extends Migration {
             $table->uuid('uuid');
             $table->string('title')->unique();
             $table->timestamps();
+
+            $table->index(['uuid'], 'INX_ORDER_STATUSES_UUID');
+            $table->index(['uuid', 'title'], 'INX_ORDER_STATUSES_SELECTION');
         });
     }
 
