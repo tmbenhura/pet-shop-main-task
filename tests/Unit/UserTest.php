@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -40,5 +42,19 @@ class UserTest extends TestCase
 
         $this->assertEquals(['admin'], $admin->roles);
         $this->assertEquals(['user'], $user->roles);
+    }
+
+    /**
+     * User has orders relationship.
+     */
+    public function test_user_has_orders_relationship(): void
+    {
+        $user = User::factory()->create(['is_admin' => false]);
+
+        $this->assertTrue($user->orders() instanceof HasMany);
+
+        Order::factory()->create(['user_id' => $user->id]);
+
+        $this->assertEquals(1, $user->orders()->count());
     }
 }

@@ -9,6 +9,7 @@ namespace App\Models;
 use App\Traits\HasUuid;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -96,5 +97,13 @@ class User extends Authenticatable
         return Attribute::make(
             get: fn (mixed $value, array $attributes) => $attributes['is_admin'] ? ['admin'] : ['user'],
         );
+    }
+
+    /**
+     * User's orders
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

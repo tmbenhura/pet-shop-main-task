@@ -33,7 +33,7 @@ return new class () extends Migration {
             }
 
             $table->index(['uuid'], 'INX_ORDERS_UUID');
-            $table->index(['uuid', 'user_id', 'order_status_uuid', 'payment_uuid'], 'INX_ORDER_STATUSES_SELECTION');
+            $table->index(['uuid', 'user_id', 'order_status_uuid', 'payment_uuid'], 'INX_ORDERS_SELECTION');
         });
     }
 
