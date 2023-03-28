@@ -15,7 +15,7 @@ use App\Http\Controllers\Api\V1\Admin\LoginController as AdminLoginController;
 |
 */
 
-Route::prefix('api/v1/admin')
+Route::prefix('v1/admin')
     ->name('api.admin.')
     ->group(
         function (): void {
@@ -23,7 +23,7 @@ Route::prefix('api/v1/admin')
         }
     );
 
-Route::prefix('api/v1/user')
+Route::prefix('v1/user')
     ->name('api.user.')
     ->group(
         function (): void {
