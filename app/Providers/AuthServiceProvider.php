@@ -1,9 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Lcobucci\JWT\Signer\Rsa\Sha256;
+use Lcobucci\JWT\Signer\Key\InMemory;
+use Lcobucci\JWT\Validation\Constraint;
+use Lcobucci\Clock\SystemClock;
+use Lcobucci\JWT\Configuration;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +32,26 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Auth::viaRequest(
+            'jwt',
+            function (Request $request) {
+                $configuration = Configuration::forAsymmetricSigner(
+                    new Sha256(),
+                    InMemory::file(base_path(config('jwt.signing_key_filename'))),
+                    InMemory::plainText(config('jwt.verification_key'))
+                );
+
+                $configuration->setValidationConstraints(
+                    new Constraint\SignedWith($configuration->signer(), $configuration->signingKey()),
+                    new Constraint\StrictValidAt(SystemClock::fromUTC()),
+                    new Constraint\IssuedBy(config('app.url'))
+                );
+
+                $token = $configuration->parser()->parse($request->bearerToken());
+
+                return User::where('uuid', $token->claims()->get('user_uuid'))
+                    ->first();
+            }
+        );
     }
 }
