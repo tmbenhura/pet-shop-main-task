@@ -6,7 +6,13 @@ namespace Tests\Unit;
 
 use App\Contracts\JwtTokenManager;
 use App\Services\TokenManager;
-use PHPUnit\Framework\TestCase;
+use Carbon\CarbonImmutable;
+use Lcobucci\JWT\Encoding\CannotDecodeContent;
+use Lcobucci\JWT\Encoding\JoseEncoder;
+use Lcobucci\JWT\Token\InvalidTokenStructure;
+use Lcobucci\JWT\Token\Parser;
+use Lcobucci\JWT\Token\UnsupportedHeaderFound;
+use Tests\TestCase;
 
 class TokenManagerTest extends TestCase
 {
@@ -16,5 +22,32 @@ class TokenManagerTest extends TestCase
     public function test_token_manager_implements_jwt_token_manager_interface(): void
     {
         $this->assertTrue(in_array(JwtTokenManager::class, class_implements(TokenManager::class)));
+    }
+
+    /**
+     * Token manager can issue a token.
+     */
+    public function test_token_manager_can_issue_a_token(): void
+    {
+        $expiryDate = CarbonImmutable::now()->addDays(5);
+        $token = app(TokenManager::class)->issueToken(
+            'http://jwt.test',
+            $expiryDate,
+            [
+                'uid' => 1,
+                'roles' => ['admin'],
+            ]
+        );
+
+        $parser = new Parser(new JoseEncoder());
+        try {
+            $decodedToken = $parser->parse($token);
+        } catch (CannotDecodeContent | InvalidTokenStructure | UnsupportedHeaderFound $e) {
+        }
+
+        $claims = $decodedToken->claims();
+        $this->assertEquals('http://jwt.test', $claims->get('iss'));
+        $this->assertEquals(1, $claims->get('uid'));
+        $this->assertEquals(['admin'], $claims->get('roles'));
     }
 }
