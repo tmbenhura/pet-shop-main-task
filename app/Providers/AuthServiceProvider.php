@@ -6,16 +6,11 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use App\Contracts\JwtTokenManager;
 use App\Models\User;
-use Exception;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Lcobucci\JWT\Signer\Rsa\Sha256;
-use Lcobucci\JWT\Signer\Key\InMemory;
-use Lcobucci\JWT\Validation\Constraint;
-use Lcobucci\Clock\SystemClock;
-use Lcobucci\JWT\Configuration;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -40,25 +35,9 @@ class AuthServiceProvider extends ServiceProvider
                     return null;
                 }
 
-                $configuration = Configuration::forAsymmetricSigner(
-                    new Sha256(),
-                    InMemory::file(base_path(config('jwt.signing_key_filename'))),
-                    InMemory::plainText(config('jwt.verification_key'))
-                );
+                $userUuid = app(JwtTokenManager::class)->getTokenClaim($request->bearerToken(), 'user_uuid');
 
-                $configuration->setValidationConstraints(
-                    new Constraint\SignedWith($configuration->signer(), $configuration->signingKey()),
-                    new Constraint\StrictValidAt(SystemClock::fromUTC()),
-                    new Constraint\IssuedBy(config('app.url'))
-                );
-
-                try {
-                    $token = $configuration->parser()->parse($request->bearerToken());
-                } catch (Exception $e) {
-                    return null;
-                }
-
-                return User::where('uuid', $token->claims()->get('user_uuid'))
+                return User::where('uuid', $userUuid)
                     ->first();
             }
         );
