@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Seeders;
 
+use App\Models\Order;
 use App\Models\User;
 use Database\Seeders\OrderSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -33,5 +34,19 @@ class OrderSeederTest extends TestCase
         $this->assertEquals(10, $distinctEmails);
         $this->assertEquals(1, $distinctPasswords);
         $this->assertTrue(Hash::check('userpassword', $user->password));
+    }
+
+    /**
+     * Orders can be seeded.
+     */
+    public function test_orders_can_be_seeded(): void
+    {
+        $this->seed(OrderSeeder::class);
+
+        $orders = Order::count();
+        $distinctOrderUsers = Order::distinct('user_id')->count();
+
+        $this->assertGreaterThanOrEqual(50, $orders);
+        $this->assertEquals(10, $distinctOrderUsers);
     }
 }
