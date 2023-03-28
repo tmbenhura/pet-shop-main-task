@@ -20,50 +20,48 @@ class LoginController extends Controller
     public function __invoke(Request $request): JsonResponse
     {
         if (!User::where('email', $request->email)->where('is_admin', true)->exists()) {
-            return response()->json(
-                [
-                    'errors' => [
-                        [
-                            'status' => '401',
-                            'title' => 'Failed to authenticate user',
-                        ],
-                    ],
-                ],
-                401
-            );
+            return $this->authenticationFailureResponse();
         }
 
         $user = User::where('email', $request->email)->first();
 
         if (!Hash::check($request->password, $user->password)) {
-            return response()->json(
-                [
-                    'errors' => [
-                        [
-                            'status' => '401',
-                            'title' => 'Failed to authenticate user',
-                        ],
-                    ],
-                ],
-                401
-            );
+            return $this->authenticationFailureResponse();
         }
-
-        $token = app(JwtTokenManager::class)->issueToken(
-            config('app.url'),
-            CarbonImmutable::now()->addHours(1),
-            [
-                'user_uuid' => $user->uuid,
-                'roles' => ['admin'],
-            ]
-        );
 
         return response()->json(
             [
                 'data' => [
-                    'token' => $token,
+                    'token' => $this->tokenForUser($user),
                 ],
             ]
+        );
+    }
+
+    private function tokenForUser(User $user): string
+    {
+        return app(JwtTokenManager::class)->issueToken(
+            config('app.url'),
+            CarbonImmutable::now()->addHours(1),
+            [
+                'user_uuid' => $user->uuid,
+                'roles' => $user->roles,
+            ]
+        );
+    }
+
+    private function authenticationFailureResponse(): JsonResponse
+    {
+        return response()->json(
+            [
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Failed to authenticate user',
+                    ],
+                ],
+            ],
+            401
         );
     }
 }
