@@ -71,4 +71,45 @@ class AuthenticateRoleMiddlewareTest extends TestCase
             ]
         );
     }
+
+    /**
+     * Authenticate role middleware disallows users when expecting admins.
+     */
+    public function test_authenticate_role_middleware_disallows_users_when_expecting_admins(): void
+    {
+        Route::middleware('auth.role:admin')->get(
+            '/test',
+            fn () => ['success' => true]
+        );
+
+        $user = User::factory()->create(
+            ['is_admin' => false]
+        );
+
+        $response = $this->postJson(
+            route('api.admin.login'),
+            ['email' => $user->email, 'password' => 'password']
+        );
+
+        $response->assertStatus(200);
+
+        $token = $response->getData()->data->token;
+
+        $response = $this->withHeader('Authorization', "Bearer $token")
+            ->getJson(
+                '/test',
+            );
+
+        $response->assertStatus(401);
+        $response->assertJson(
+            [
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Unauthorised'
+                    ]
+                ]
+            ]
+        );
+    }
 }
