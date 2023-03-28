@@ -61,4 +61,22 @@ class JwtGuardTest extends TestCase
 
         $response->assertStatus(401);
     }
+
+    /**
+     * Api guard rejects invalid tokens.
+     */
+    public function test_api_guard_rejects_invalid_tokens(): void
+    {
+        Route::middleware('auth:api')->get(
+            '/test',
+            fn () => ['user' => auth()->id()]
+        );
+
+        $response = $this->withHeader('Authorization', "Bearer INVALID")
+            ->getJson(
+                '/test',
+            );
+
+        $response->assertStatus(401);
+    }
 }

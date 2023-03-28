@@ -7,6 +7,7 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,11 @@ class AuthServiceProvider extends ServiceProvider
                     new Constraint\IssuedBy(config('app.url'))
                 );
 
-                $token = $configuration->parser()->parse($request->bearerToken());
+                try {
+                    $token = $configuration->parser()->parse($request->bearerToken());
+                } catch (Exception $e) {
+                    return null;
+                }
 
                 return User::where('uuid', $token->claims()->get('user_uuid'))
                     ->first();
