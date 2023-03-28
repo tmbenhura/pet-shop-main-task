@@ -6,6 +6,7 @@ namespace Tests\Unit;
 
 use App\Models\Order;
 use App\Models\OrderStatus;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -61,5 +62,20 @@ class OrderTest extends TestCase
         $order->status()->associate($status);
 
         $this->assertEquals($status->uuid, $order->order_status_uuid);
+    }
+
+    /**
+     * Order has payment relationship.
+     */
+    public function test_order_has_payment_relationship(): void
+    {
+        $order = Order::factory()->create();
+
+        $this->assertTrue($order->payment() instanceof BelongsTo);
+
+        $payment = Payment::factory()->create();
+        $order->payment()->associate($payment);
+
+        $this->assertEquals($payment->uuid, $order->payment_uuid);
     }
 }

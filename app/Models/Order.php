@@ -62,4 +62,12 @@ class Order extends Model
     {
         return $this->belongsTo(OrderStatus::class, 'order_status_uuid', 'uuid');
     }
+
+    /**
+     * Payment used
+     */
+    public function payment(): BelongsTo
+    {
+        return $this->belongsTo(Payment::class, 'payment_uuid', 'uuid');
+    }
 }
