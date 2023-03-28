@@ -44,4 +44,31 @@ class AuthenticateRoleMiddlewareTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson(['success' => true]);
     }
+
+    /**
+     * Authenticate role middleware disallows guests.
+     */
+    public function test_authenticate_role_middleware_disallows_guests(): void
+    {
+        Route::middleware('auth.role:admin')->get(
+            '/test',
+            fn () => ['success' => true]
+        );
+
+        $response = $this->getJson(
+            '/test',
+        );
+
+        $response->assertStatus(401);
+        $response->assertJson(
+            [
+                'errors' => [
+                    [
+                        'status' => '401',
+                        'title' => 'Unauthorized'
+                    ]
+                ]
+            ]
+        );
+    }
 }

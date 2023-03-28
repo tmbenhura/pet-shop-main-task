@@ -15,6 +15,20 @@ class AuthenticateRole
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
+        if (!$request->bearerToken()) {
+            return response()->json(
+                [
+                    'errors' => [
+                        [
+                            'status' => '401',
+                            'title' => 'Unauthorized',
+                        ]
+                    ]
+                ],
+                401
+            );
+        }
+
         return $next($request);
     }
 }
