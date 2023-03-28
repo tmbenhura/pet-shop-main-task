@@ -40,6 +40,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUuid($value)
+ * @property-read \App\Models\Payment|null $payment
+ * @property-read \App\Models\OrderStatus|null $status
+ * @property-read \App\Models\User $user
  * @mixin \Eloquent
  */
 class Order extends Model
