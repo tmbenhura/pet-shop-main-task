@@ -72,4 +72,14 @@ class TokenManagerTest extends TestCase
         $this->assertEquals(1, $tokenManager->getTokenClaim($token, 'uid'));
         $this->assertEquals(['admin'], $tokenManager->getTokenClaim($token, 'roles'));
     }
+
+    /**
+     * Token manager returns null for claim on invalid token.
+     */
+    public function test_token_manager_returns_null_for_claim_on_invalid_token(): void
+    {
+        $claim = app(TokenManager::class)->getTokenClaim('INVALID', 'uid');
+
+        $this->assertNull($claim);
+    }
 }

@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Contracts\JwtTokenManager;
 use DateTimeImmutable;
+use Exception;
 use Lcobucci\Clock\SystemClock;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Key\InMemory;
