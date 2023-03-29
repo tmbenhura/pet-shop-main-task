@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e0a9deb6882605c3c38a0d41152ebe4",
+    "content-hash": "56bef18ba5ebc5acfcfe674430ddf9d5",
     "packages": [
         {
             "name": "brick/math",
@@ -983,16 +983,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.4.1",
+            "version": "v10.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "7d15f7eef442633cff108f83d9fe43d8c3b8b76f"
+                "reference": "56dd3b190ec1b8ad5ae8efd6fea65bc272f2dd52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7d15f7eef442633cff108f83d9fe43d8c3b8b76f",
-                "reference": "7d15f7eef442633cff108f83d9fe43d8c3b8b76f",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/56dd3b190ec1b8ad5ae8efd6fea65bc272f2dd52",
+                "reference": "56dd3b190ec1b8ad5ae8efd6fea65bc272f2dd52",
                 "shasum": ""
             },
             "require": {
@@ -1179,7 +1179,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-03-18T11:34:02+00:00"
+            "time": "2023-03-28T14:40:18+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -2831,16 +2831,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.13",
+            "version": "v0.11.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "722317c9f5627e588788e340f29b923e58f92f54"
+                "reference": "8c2e264def7a8263a68ef6f0b55ce90b77d41e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/722317c9f5627e588788e340f29b923e58f92f54",
-                "reference": "722317c9f5627e588788e340f29b923e58f92f54",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/8c2e264def7a8263a68ef6f0b55ce90b77d41e17",
+                "reference": "8c2e264def7a8263a68ef6f0b55ce90b77d41e17",
                 "shasum": ""
             },
             "require": {
@@ -2901,9 +2901,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.13"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.14"
             },
-            "time": "2023-03-21T14:22:44+00:00"
+            "time": "2023-03-28T03:41:01+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -3129,6 +3129,66 @@
                 }
             ],
             "time": "2023-01-12T18:13:24+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.14.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "bab62023a4745a61170ad5424184533685e73c2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/bab62023a4745a61170ad5424184533685e73c2d",
+                "reference": "bab62023a4745a61170ad5424184533685e73c2d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.14.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-03-14T16:41:21+00:00"
         },
         {
             "name": "symfony/console",
@@ -5379,6 +5439,97 @@
             "time": "2023-01-03T09:29:04+00:00"
         },
         {
+            "name": "tmbenhura/pet-shop-order-status-notifications",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../pet-shop-order-status-notifications",
+                "reference": "3eb35d5ef248183f1b0b7422f7eb1a735a032383"
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.5",
+                "illuminate/contracts": "^10.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.14.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.15",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "nunomaduro/larastan": "^2.0.1",
+                "nunomaduro/phpinsights": "^2.8",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.0",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "PetShop\\OrderStatusNotifications\\OrderStatusNotificationsServiceProvider"
+                    ],
+                    "aliases": {
+                        "OrderStatusNotifications": "PetShop\\OrderStatusNotifications\\Facades\\OrderStatusNotifications"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PetShop\\OrderStatusNotifications\\": "src/",
+                    "PetShop\\OrderStatusNotifications\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "PetShop\\OrderStatusNotifications\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@php ./vendor/bin/testbench package:discover --ansi"
+                ],
+                "analyse": [
+                    "vendor/bin/phpstan analyse"
+                ],
+                "insights": [
+                    "vendor/bin/phpinsights analyse src"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "vendor/bin/pint"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tmbenhura",
+                    "email": "tmbenhura@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is my package pet-shop-order-status-notifications",
+            "homepage": "https://github.com/tmbenhura/pet-shop-order-status-notifications",
+            "keywords": [
+                "laravel",
+                "pet-shop-order-status-notifications",
+                "tmbenhura"
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.5.0",
             "source": {
@@ -7206,16 +7357,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.21.2",
+            "version": "v1.21.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "19d6fe167e2389b41fe1b4ee52293d1eaf8a43fc"
+                "reference": "3042ff8cf403817c340d5a7762b2d32900239f46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/19d6fe167e2389b41fe1b4ee52293d1eaf8a43fc",
-                "reference": "19d6fe167e2389b41fe1b4ee52293d1eaf8a43fc",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/3042ff8cf403817c340d5a7762b2d32900239f46",
+                "reference": "3042ff8cf403817c340d5a7762b2d32900239f46",
                 "shasum": ""
             },
             "require": {
@@ -7267,7 +7418,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2023-03-06T14:23:15+00:00"
+            "time": "2023-03-13T01:22:10+00:00"
         },
         {
             "name": "league/container",
@@ -8670,16 +8821,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.0.18",
+            "version": "10.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "582563ed2edc62d1455cdbe00ea49fe09428eef3"
+                "reference": "20c23e85c86e5c06d63538ba464e8054f4744e62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/582563ed2edc62d1455cdbe00ea49fe09428eef3",
-                "reference": "582563ed2edc62d1455cdbe00ea49fe09428eef3",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/20c23e85c86e5c06d63538ba464e8054f4744e62",
+                "reference": "20c23e85c86e5c06d63538ba464e8054f4744e62",
                 "shasum": ""
             },
             "require": {
@@ -8751,7 +8902,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.0.18"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.0.19"
             },
             "funding": [
                 {
@@ -8767,7 +8918,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-22T06:15:31+00:00"
+            "time": "2023-03-27T11:46:33+00:00"
         },
         {
             "name": "psr/cache",
@@ -9895,16 +10046,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "8.9.0",
+            "version": "8.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "8f11e0f5ff984d6862bb9d83aa513dc05a1773ef"
+                "reference": "3d4fe0c803ae15829ef72d90d3d4eee3dd9f79b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/8f11e0f5ff984d6862bb9d83aa513dc05a1773ef",
-                "reference": "8f11e0f5ff984d6862bb9d83aa513dc05a1773ef",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/3d4fe0c803ae15829ef72d90d3d4eee3dd9f79b2",
+                "reference": "3d4fe0c803ae15829ef72d90d3d4eee3dd9f79b2",
                 "shasum": ""
             },
             "require": {
@@ -9944,7 +10095,7 @@
             ],
             "support": {
                 "issues": "https://github.com/slevomat/coding-standard/issues",
-                "source": "https://github.com/slevomat/coding-standard/tree/8.9.0"
+                "source": "https://github.com/slevomat/coding-standard/tree/8.9.1"
             },
             "funding": [
                 {
@@ -9956,7 +10107,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-25T15:52:37+00:00"
+            "time": "2023-03-27T11:00:16+00:00"
         },
         {
             "name": "spatie/backtrace",
@@ -11187,6 +11338,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "tmbenhura/pet-shop-order-status-notifications": 20,
         "ajcastro/scribe-tdd": 20
     },
     "prefer-stable": true,
