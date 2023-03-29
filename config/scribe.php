@@ -381,29 +381,37 @@ INTRO
         'metadata' => [
             Strategies\Metadata\GetFromDocBlocks::class,
             Strategies\Metadata\GetFromMetadataAttributes::class,
+            AjCastro\ScribeTdd\Strategies\Metadata\GetFromDocBlocksFromScribeTdd::class,
         ],
         'urlParameters' => [
             Strategies\UrlParameters\GetFromLaravelAPI::class,
             Strategies\UrlParameters\GetFromLumenAPI::class,
             Strategies\UrlParameters\GetFromUrlParamAttribute::class,
             Strategies\UrlParameters\GetFromUrlParamTag::class,
+            AjCastro\ScribeTdd\Strategies\UrlParameters\GetFromUrlParamTagFromScribeTdd::class,
         ],
         'queryParameters' => [
             Strategies\QueryParameters\GetFromFormRequest::class,
             Strategies\QueryParameters\GetFromInlineValidator::class,
             Strategies\QueryParameters\GetFromQueryParamAttribute::class,
             Strategies\QueryParameters\GetFromQueryParamTag::class,
+            AjCastro\ScribeTdd\Strategies\QueryParameters\GetFromTestResult::class,
+            AjCastro\ScribeTdd\Strategies\QueryParameters\AddPaginationParametersFromScribeTdd::class,
+            AjCastro\ScribeTdd\Strategies\QueryParameters\GetFromQueryParamTagFromScribeTdd::class,
         ],
         'headers' => [
             Strategies\Headers\GetFromRouteRules::class,
             Strategies\Headers\GetFromHeaderAttribute::class,
             Strategies\Headers\GetFromHeaderTag::class,
+            AjCastro\ScribeTdd\Strategies\Headers\GetFromHeaderTagFromScribeTdd::class,
         ],
         'bodyParameters' => [
             Strategies\BodyParameters\GetFromFormRequest::class,
             Strategies\BodyParameters\GetFromInlineValidator::class,
             Strategies\BodyParameters\GetFromBodyParamAttribute::class,
             Strategies\BodyParameters\GetFromBodyParamTag::class,
+            AjCastro\ScribeTdd\Strategies\BodyParameters\GetFromTestResult::class,
+            AjCastro\ScribeTdd\Strategies\BodyParameters\GetFromBodyParamTagFromScribeTdd::class,
         ],
         'responses' => [
             Strategies\Responses\UseResponseAttributes::class,
@@ -412,10 +420,14 @@ INTRO
             Strategies\Responses\UseResponseTag::class,
             Strategies\Responses\UseResponseFileTag::class,
             Strategies\Responses\ResponseCalls::class,
+            AjCastro\ScribeTdd\Strategies\Responses\GetFromTestResult::class,
+            AjCastro\ScribeTdd\Strategies\Responses\UseResponseTagFromScribeTdd::class,
+            AjCastro\ScribeTdd\Strategies\Responses\UseResponseFileTagFromScribeTdd::class,
         ],
         'responseFields' => [
             Strategies\ResponseFields\GetFromResponseFieldAttribute::class,
             Strategies\ResponseFields\GetFromResponseFieldTag::class,
+            AjCastro\ScribeTdd\Strategies\ResponseFields\GetFromResponseFieldTagFromScribeTdd::class,
         ],
     ],
 
