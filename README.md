@@ -7,6 +7,22 @@ Submission has the following:
 - Implementation of [Swagger Documentation](https://localhost/public/docs/index.html) found at [/public/docs/index.html](https://localhost/public/docs/index.html)
 - Implementation of Order Status Notifications
 
+## Installation
+
+Before running composer install, an additional package for notifications is required to be present.
+It should reside in the parent folder of this application and can be fetched via:
+```bash
+cd ..
+git clone https://github.com/tmbenhura/pet-shop-order-status-notifications.git
+```
+
+Returning to the application directory, you may now run your composer install.
+
+```bash
+cd ../pet-shop-main-task
+composer install
+```
+
 ## Configuration
 
 To allow out-of-the-box use, the API ships with a default signing key, jwt-signing-key.pem, set on first install.
@@ -25,6 +41,39 @@ JWT_SIGNING_KEY_FILENAME=jwt-signing-key.pem
 A default verification key is set and can be replaced:
 ```bash
 JWT_VERIFICATION_KEY="mBC5v1sOKVvbdEitdSBenu59nfNfhwkedkJVNabosTw="
+```
+
+## Database
+The database requires migration and seeding:
+
+```bash
+php artisan migrate --seed
+```
+
+The database can be restored to this initial seeded state by running:
+
+```bash
+php artisan db:reset
+```
+
+## Order Status Notifications
+An additional package for notifications is required to be present before running composer install.
+It should reside in the parent folder of this application and can be fetched via:
+```bash
+cd ..
+git clone https://github.com/tmbenhura/pet-shop-order-status-notifications.git
+```
+
+The webhook for order status notifications needs to be setup, this endpoint will receive a JSON post:
+
+```bash
+OSN_WEBHOOK_URL=https://webhook.site/...
+```
+
+The Order model to be monitored for status changes can be changed, if the need arises:
+
+```bash
+OSN_MODEL="\\App\\Models\\Order"
 ```
 
 ## API Documentation
