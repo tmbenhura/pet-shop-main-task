@@ -23,6 +23,9 @@ class AdminTest extends TestCase
 
     /**
      * Log into admin account.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_admin_can_log_into_account(): void
     {
@@ -40,6 +43,9 @@ class AdminTest extends TestCase
 
     /**
      * Login fails for users.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_login_fails_for_users(): void
     {
@@ -67,6 +73,9 @@ class AdminTest extends TestCase
 
     /**
      * Login fails with invalid email.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_login_fails_with_invalid_email(): void
     {
@@ -95,6 +104,9 @@ class AdminTest extends TestCase
 
     /**
      * Login fails with incorrect email.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_login_fails_with_incorrect_email(): void
     {
@@ -122,6 +134,9 @@ class AdminTest extends TestCase
 
     /**
      * Login fails with missing password.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_login_fails_with_missing_password(): void
     {
@@ -150,6 +165,9 @@ class AdminTest extends TestCase
 
     /**
      * Login fails with incorrect password.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_login_fails_with_incorrect_password(): void
     {
@@ -177,6 +195,9 @@ class AdminTest extends TestCase
 
     /**
      * Login returns token on success.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_login_returns_token_on_success(): void
     {
@@ -198,6 +219,9 @@ class AdminTest extends TestCase
 
     /**
      * Admin token claims are compliant.
+     *
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required
      */
     public function test_admin_token_claims_is_compliant(): void
     {
