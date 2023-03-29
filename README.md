@@ -9,8 +9,18 @@ Submission has the following:
 
 ## Installation
 
-Before running composer install, an additional package for notifications is required to be present.
-It should reside in the parent folder of this application and can be fetched via:
+Before installing, an additional package for notifications is required to be present on the filesystem.
+The git cloning of this package and a composer install can be executed sequentially using the command: 
+
+```bash
+composer full-install
+```
+
+Or,
+
+Should the above fail, due to permissions or other issues, the steps will need to be executed seperately as outlined below.
+
+The additional package should reside in the parent folder of this application and can be fetched via:
 ```bash
 cd ..
 git clone https://github.com/tmbenhura/pet-shop-order-status-notifications.git
@@ -44,7 +54,9 @@ JWT_VERIFICATION_KEY="mBC5v1sOKVvbdEitdSBenu59nfNfhwkedkJVNabosTw="
 ```
 
 ## Database
-The database requires migration and seeding:
+The database configuration assumes MySQL defaults and a schema named "pet_shop_main_task", it may need to be reconfigured.
+
+The database also requires migration and seeding:
 
 ```bash
 php artisan migrate --seed
