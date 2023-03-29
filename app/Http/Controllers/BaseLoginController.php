@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use App\Contracts\JwtTokenManager;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -21,7 +22,7 @@ abstract class BaseLoginController extends Controller
     /**
      * Login into api
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(LoginRequest $request): JsonResponse
     {
         if (!$this->userExists($request)) {
             return $this->authenticationFailureResponse();
