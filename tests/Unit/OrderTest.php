@@ -35,6 +35,19 @@ class OrderTest extends TestCase
     }
 
     /**
+     * Order has nullable fields.
+     */
+    public function test_order_has_nullable_fields(): void
+    {
+        $order = Order::factory()->create();
+
+        $order->payment_uuid = null;
+        $order->save();
+
+        $this->assertNull($order->payment_uuid);
+    }
+
+    /**
      * Order has user relationship.
      */
     public function test_order_has_user_relationship(): void

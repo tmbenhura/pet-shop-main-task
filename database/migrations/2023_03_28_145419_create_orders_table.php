@@ -17,7 +17,7 @@ return new class () extends Migration {
             $table->uuid('uuid');
             $table->unsignedBigInteger('user_id');
             $table->uuid('order_status_uuid');
-            $table->uuid('payment_uuid');
+            $table->uuid('payment_uuid')->nullable();
             $table->string('billing_address');
             $table->string('shipping_address');
             $table->bigInteger('delivery_fee_cents');
