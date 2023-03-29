@@ -12,7 +12,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('db:reset')
+            ->timezone('UTC')
+            ->daily()
+            ->at('00:00');
     }
 
     /**
