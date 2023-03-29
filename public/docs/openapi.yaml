@@ -1,0 +1,250 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/v1/admin/login:
+    post:
+      summary: 'Login returns token on success.'
+      operationId: loginReturnsTokenOnSuccess
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'login returns token on success'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk3Ljk0MzMxLCJuYmYiOjE2ODAxMzA0OTcuOTQzMzEsImV4cCI6MTY4MDEzNDA5Ny45NDMyMjksInVzZXJfdXVpZCI6IjE0Yzc5MzYyLTQ3NGYtNDI3My05NWMyLTUxNTY4ZjM3Y2U3MSIsInJvbGVzIjpbImFkbWluIl19.rG1IYxHYdS9Rw6vDqz4D5rPrF8sU7CPR_TjfGcbL7H3JnDh9eb6C3LOTmg9Y60OSXLwZH23R-zjCx9ImblkwIsWJ1lh2P_WKgbjD4T6B4ZaBW4meu7LaLf15UZ31IcgG0IDj-SbAxZJfX8JSbwKeZTc9oDQzqAvM-iqvq8pqlVmUZaZYoEftDiObb4uQ1Qyzl3OsxExY1WRoIy9DoiOThdFZbo3p1zSEIkf_P9psBusnt7dfzIVbvkhTJNIBzQ74YjsvyLLd0BuqzdWTSV4HrL7NoO2XwgdPQGjaJ3FpjYCmwqsAP-mOZyuxBf_5O7P2FRVOilY9FooWWNBuqJq6hP018AGjgOGOX-LGj1pkwcOmpOBRB8Jccaq7HbpK1bZGN0aTpAUb-svW2jljmhXHf4hrvrB3-M_QEVRwpCWc3m6uyYyJzOnJESHsGQU10hbMGnkPHLnXFRQyfoUJ8wZcnY66fBIX1qA-xJvfajIaZAPEv4j_TU5SAMj6m8S-6H2BhWYU60JtMwwyajU9YAjQbOXiabkKWfAPkYdp_y3l52CY7GVS1_75XnnoCzkoFD-vX2GOfhgxzavDHw4zURQ0lgm64IrZnzFy6WHvf0nl210fChI65-aPsmwjUdgidKgfasrplX2sRmYxg9TobNoXg9CNL1mYBxWjxTeJ35k3fX8
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk3Ljk0MzMxLCJuYmYiOjE2ODAxMzA0OTcuOTQzMzEsImV4cCI6MTY4MDEzNDA5Ny45NDMyMjksInVzZXJfdXVpZCI6IjE0Yzc5MzYyLTQ3NGYtNDI3My05NWMyLTUxNTY4ZjM3Y2U3MSIsInJvbGVzIjpbImFkbWluIl19.rG1IYxHYdS9Rw6vDqz4D5rPrF8sU7CPR_TjfGcbL7H3JnDh9eb6C3LOTmg9Y60OSXLwZH23R-zjCx9ImblkwIsWJ1lh2P_WKgbjD4T6B4ZaBW4meu7LaLf15UZ31IcgG0IDj-SbAxZJfX8JSbwKeZTc9oDQzqAvM-iqvq8pqlVmUZaZYoEftDiObb4uQ1Qyzl3OsxExY1WRoIy9DoiOThdFZbo3p1zSEIkf_P9psBusnt7dfzIVbvkhTJNIBzQ74YjsvyLLd0BuqzdWTSV4HrL7NoO2XwgdPQGjaJ3FpjYCmwqsAP-mOZyuxBf_5O7P2FRVOilY9FooWWNBuqJq6hP018AGjgOGOX-LGj1pkwcOmpOBRB8Jccaq7HbpK1bZGN0aTpAUb-svW2jljmhXHf4hrvrB3-M_QEVRwpCWc3m6uyYyJzOnJESHsGQU10hbMGnkPHLnXFRQyfoUJ8wZcnY66fBIX1qA-xJvfajIaZAPEv4j_TU5SAMj6m8S-6H2BhWYU60JtMwwyajU9YAjQbOXiabkKWfAPkYdp_y3l52CY7GVS1_75XnnoCzkoFD-vX2GOfhgxzavDHw4zURQ0lgm64IrZnzFy6WHvf0nl210fChI65-aPsmwjUdgidKgfasrplX2sRmYxg9TobNoXg9CNL1mYBxWjxTeJ35k3fX8
+        401:
+          description: 'login fails with incorrect password'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    -
+                      status: '401'
+                      title: 'Failed to authenticate user'
+                properties:
+                  errors:
+                    type: array
+                    example:
+                      -
+                        status: '401'
+                        title: 'Failed to authenticate user'
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                          example: '401'
+                        title:
+                          type: string
+                          example: 'Failed to authenticate user'
+        422:
+          description: 'login fails with missing password'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    -
+                      status: '422'
+                      title: 'Unprocessable Entity'
+                      description: 'The password field is required.'
+                properties:
+                  errors:
+                    type: array
+                    example:
+                      -
+                        status: '422'
+                        title: 'Unprocessable Entity'
+                        description: 'The password field is required.'
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                          example: '422'
+                        title:
+                          type: string
+                          example: 'Unprocessable Entity'
+                        description:
+                          type: string
+                          example: 'The password field is required.'
+      tags:
+        - Admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user'
+                  example: rosalinda22@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: "yO5'iD@t7U/X-]"
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/user/login:
+    post:
+      summary: 'User token claims are compliant.'
+      operationId: userTokenClaimsAreCompliant
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'user token claims are compliant'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjcwMzQyMSwibmJmIjoxNjgwMTMwNDk5LjcwMzQyMSwiZXhwIjoxNjgwMTM0MDk5LjcwMzMwOSwidXNlcl91dWlkIjoiMWJhMjFiMTgtMjVkOS00MzNiLTliZDYtY2IwN2VlZWM4NmM2Iiwicm9sZXMiOlsidXNlciJdfQ.Wy-XdMcl3O9flkC_cclqLpI5FddouYAsiBVJY8UzgMyCka_4s-jX7--W6RbQt2LMsC7pxtnYlOLcZk2ub5su2pwhUr6i0ia1nTWxkIzm9M1kT0CjXSn2X6LgQHuFdOC_BDPZOW__S_IX8t1DTPaFMjQcUjt6wy6SjmqhxUhYueNDp95-gCfRmorPXUApNWhMG6eUVm3exRNh4Qngf9H95qJeChHfgqpZyhBvGtGngdDpOWLd1jHLLJJ-8rHK4Egnhfx50OeGInnKWNJfPeLNRJwS-1vixsWNUErmyrcd24iaryz9599uO0JKbcDj7YtNCuMLMZl_RS3oV7AopJWdrZKKXUwmBuSyXIHZTnXZQd68XwKvkqOowpTuyfnCiS-6Bp77NaQzqbPQ3WL6lHFZRkb1ITN4busHa0CIxI6VHss2adQLNwHryVWNt06MQJlYWn4j1C52OzJtjzlbNyN_rA6DtUMvWJzseQXefi61N-9bz32B_VFMIGF8-fV1zzlcr6lmNf2qcMKtDj-RTnbZXo8DkcPU9f2Uf70b-gR6Hl1zUEZBGlwdVNA-33UzJOATPRH_hYCW4yilWelxDq_Gd-KgeIf4A4OsATBsk0aLOsALrXpV_7t_oMKRLERL6-U4SAJ3BS86QBQTv-U1wNDDQQU0h-gNs6buD5vUkCiwDnU
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjcwMzQyMSwibmJmIjoxNjgwMTMwNDk5LjcwMzQyMSwiZXhwIjoxNjgwMTM0MDk5LjcwMzMwOSwidXNlcl91dWlkIjoiMWJhMjFiMTgtMjVkOS00MzNiLTliZDYtY2IwN2VlZWM4NmM2Iiwicm9sZXMiOlsidXNlciJdfQ.Wy-XdMcl3O9flkC_cclqLpI5FddouYAsiBVJY8UzgMyCka_4s-jX7--W6RbQt2LMsC7pxtnYlOLcZk2ub5su2pwhUr6i0ia1nTWxkIzm9M1kT0CjXSn2X6LgQHuFdOC_BDPZOW__S_IX8t1DTPaFMjQcUjt6wy6SjmqhxUhYueNDp95-gCfRmorPXUApNWhMG6eUVm3exRNh4Qngf9H95qJeChHfgqpZyhBvGtGngdDpOWLd1jHLLJJ-8rHK4Egnhfx50OeGInnKWNJfPeLNRJwS-1vixsWNUErmyrcd24iaryz9599uO0JKbcDj7YtNCuMLMZl_RS3oV7AopJWdrZKKXUwmBuSyXIHZTnXZQd68XwKvkqOowpTuyfnCiS-6Bp77NaQzqbPQ3WL6lHFZRkb1ITN4busHa0CIxI6VHss2adQLNwHryVWNt06MQJlYWn4j1C52OzJtjzlbNyN_rA6DtUMvWJzseQXefi61N-9bz32B_VFMIGF8-fV1zzlcr6lmNf2qcMKtDj-RTnbZXo8DkcPU9f2Uf70b-gR6Hl1zUEZBGlwdVNA-33UzJOATPRH_hYCW4yilWelxDq_Gd-KgeIf4A4OsATBsk0aLOsALrXpV_7t_oMKRLERL6-U4SAJ3BS86QBQTv-U1wNDDQQU0h-gNs6buD5vUkCiwDnU
+        401:
+          description: 'login fails with incorrect password'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    -
+                      status: '401'
+                      title: 'Failed to authenticate user'
+                properties:
+                  errors:
+                    type: array
+                    example:
+                      -
+                        status: '401'
+                        title: 'Failed to authenticate user'
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                          example: '401'
+                        title:
+                          type: string
+                          example: 'Failed to authenticate user'
+        422:
+          description: 'login fails with missing password'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    -
+                      status: '422'
+                      title: 'Unprocessable Entity'
+                      description: 'The password field is required.'
+                properties:
+                  errors:
+                    type: array
+                    example:
+                      -
+                        status: '422'
+                        title: 'Unprocessable Entity'
+                        description: 'The password field is required.'
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                          example: '422'
+                        title:
+                          type: string
+                          example: 'Unprocessable Entity'
+                        description:
+                          type: string
+                          example: 'The password field is required.'
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user'
+                  example: mertz.verona@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: 'uvg|}4qB<)>Q^U#'
+              required:
+                - email
+                - password
+      security: []
+tags:
+  -
+    name: Admin
+    description: ''
+  -
+    name: User
+    description: ''

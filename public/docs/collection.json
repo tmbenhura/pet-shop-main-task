@@ -1,0 +1,801 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "0ffc0528-bffd-44d7-b4e7-90e3814842d6",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Admin",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login returns token on success.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/admin\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/admin\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"rosalinda22@example.com\",\"password\":\"yO5'iD@t7U\\\/X-]\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk3LjQ1MjcxOCwibmJmIjoxNjgwMTMwNDk3LjQ1MjcxOCwiZXhwIjoxNjgwMTM0MDk3LjQ1MjY0MSwidXNlcl91dWlkIjoiZmMyNTg0ZjMtM2IzZi00MjRjLTk0YmMtYjAwYjkxOWNkZGUyIiwicm9sZXMiOlsiYWRtaW4iXX0.Vr6xwyrolEjoCqFRdrNy5GouoOs-neImxrIPfIFyHgFXALm4ONSaxoZnyUcefW-_SZ_6e5G0tsKwog5K0y9Ng-FKXMVRSiqMmRD47lcl-t30d2x57TFTC305mnftutElnI4PSpn8xrQAJ6o-B4GFmgW3ABcb0IfYn9-D_gf44d9wcG0zxpqi_StwPHqMrE0ZMD7IAUTV1Vr_-KJXdtY01CH05FtWUR060LAxZ0aLbj6wOZHvGzIwOF1QH9Ya5f4IgWNye1TSkIllNLr4Pg7exCtnUiawosyjwHeeGqIt90ABBo0fwvlIxoiG4o4uY7xyAUPdofBNl8Xbglq-lJooTI_glDaBpWfKTscXxXhOQ2Tk21O4B1boQMozUDfVZ-djCuxfnf5wLHRFrR94--vK1hZItDL504-LYnHKt1IVbp-Dahi_RXGBU4vSkTGUIBkCj1lWN9YeIat085C6oYBOLOSL45oRANGt9EVlSMTpETvLMDClTSoTgFEkp7IVT7CU-ilxt1z76dU9giuV1eSPFnNbSNPooABYAa8f5EQUxnhWQ4pIfbnA7x6xjKw_HbFhwxisRtSd0fWcwhhVI_woai2fIoIfayPmFff4wapgvfeaRtZoBUCkym6clyFIaDupaGfnVlJ5MMbZIsuXwWX3Zwh9BNTSWD3r9GQEhIiUhdo\"}}",
+                            "name": "admin can log into account"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjA5MjI4NSwibmJmIjoxNjgwMTMwNDk4LjA5MjI4NSwiZXhwIjoxNjgwMTM0MDk4LjA5MjE3NCwidXNlcl91dWlkIjoiYTdjNTgwOTQtMTBmYS00NGM5LTliOTctNWIyZmMyNjNjNDgzIiwicm9sZXMiOlsiYWRtaW4iXX0.KCUHUSjb9zkQqUl2k-uqpx0yi9txMdqhQTTJiJraCzfuKFg21wELRhbH0igx36p6HpQCBotwsmwXiJA4cGKcY6WmCtZRI4IfZzfSmZ65U05YeatIM7z_UU65uq6dhD4tbOejSHvn6KzTPVxz4rVlNXUmAIuUXrgB6jm5RbRzcb14gmToE7V-PelMO9exTBMnh46LdiK2ik7kgHplnteWmKdY1pUPk_giZXOAtEHzwsy_unos80X7F3Fs-FNmwESsGe0kWleu58VSOqScP_SLozF1wiwC_ZP66uBEr4G4sMzCN43Ot3iX0Or18AEi-MoIwqRmKd9uYWNWItDmzLh7uwp0m9mDwGs5FHfB0Adm8bNCrXn08IoctnZ7aArM25tSvYbsNBFlDaSJ9Kh97PAdDGjWIJszQzcmMYlGcpvfW8xykGhujuN68QV96oqDpk6bAHLT6vhB2xit_JiLEkjN4yw19rFRFagcmLdGeRbdHQ6kEkj94_f-bscewIneuaA0Z1_63AdVAH3FHukvv2oCd7hyDIg5UTfm7W3olaoUGJdMwhYk0gQ3lNxqCT3gdxTUgqP_8RYlVsDeLrdngv1Yikth8rRuHxSEiyiJDYQpc23CjrRr1_U37JQ9rVMbTog0pC_IMejZ7-wKnJdmJdRHNqMGnLjdn3uNL_8BRuLuT40\"}}",
+                            "name": "admin token claims is compliant"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjY4MTQ3MywibmJmIjoxNjgwMTMwNDk4LjY4MTQ3MywiZXhwIjoxNjgwMTM0MDk4LjY4MTM3LCJ1c2VyX3V1aWQiOiJjMDUwYWVmNC1lMTk4LTQ4ZjEtYjllMS1hNzcyNmNhNWVhMTYiLCJyb2xlcyI6WyJhZG1pbiJdfQ.J0xAKeuQx9bSO47uYn5Zamjff_7ZwN-N7gV0AeFbBGqimqbLHVqyxl1nlcH3OUmTl4QwkMJ8VgMZogNI2CcH6Im9JNS8CgqlXRImJmnyQcGtaGSFqq2gAGwAqHY4j-vIxW6-CMGz92XQ806Y1wl07IpoZV_3ATpgIptCMJwKOR_40QKFPnTh3wxdd3YyVR0YGEwfJuYoaTRt58iN6c-5Yo7mzp53L4v_0SpV4BlmcjazhNgIJ93eDNYWX38OVkNEPvkMgA8vWVqhUnRDr3sc48NWfZNA9G7FGdQTH0TH-rr4TIgWSEs8IVTV3Xm5mWUFRz-y4-xUhxHvPR4EtGmRSMqb-9vwLTH2OR7MBqPh4vBmkYrRv5rEoHj1cXbxbSBUBesaWN_4iW3wcNIatuEhZtUfvap1eXnLzOSZp8ScE1PUdbBWJGk3Osie9r2v43LZzbTGHzUbQtHMYsqCs3xe9LHfS-J2atNxcYVsV1GkdwQ8diDVpC4B0QcZptBS9KZuFGdpDR3_ZW6rRhHJNtJrLA477UPmKEXFm4OqLXHOUiZi2W-1vmfxhwk85S9gyArM0ASlSJKshQ6vnQvxQ3lsL4XNsjObLaF68ANzi4sf4I1HeKdMljfgzJPDadh_qVeVAQlycg783VUiWBvAOsQQE0B6CxeQGS2F78k5ak_VD6M\"}}",
+                            "name": "api guard can resolve users"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjI2MTg3OCwibmJmIjoxNjgwMTMwNDk4LjI2MTg3OCwiZXhwIjoxNjgwMTM0MDk4LjI2MTc2NSwidXNlcl91dWlkIjoiYTNmMjViODktZmRjNy00ZGQ5LThjZjctMDU3ZGMyY2UxZTNjIiwicm9sZXMiOlsiYWRtaW4iXX0.ffDKAWLpn2ezZl8ovDskG3Tpts-A535zz7xnYTQNDy3hBfrwZyWifQ7vC5gc7Q3_ySBP37jWDi24-qRa5RNAyXCMsIIsmyUk2egz2aAnEyibIDkX9u7hWiahfgWYqs04a_kh3QAdhpXtp1v5U2JO_LkVh9Se5B95hV6V-kMxBmu2DfSSfFjjObqREMv10gQair-E6mLQ6QuxoQSWSD7oC1lnf-Kd9UydPfiDgg3FGjMrszbnfIFjf4Y5WXJ7ygqwzVB9mzrRgd65jKb9UBxJMxyJmM9UMegkMU7-7U60FxFtZ6t-2oDr9ZP2LJX2r3U6AXhDHXfxTgnI2PjyS-zais_xh9IVHcKYeNnzmyGbvDcezXrsY2tkRDg_LEfS895kSchN5P150cgsabqPIlvRKwVB1ONj9si_BdXzzu97SWJLcWePR4sZ21ePjvMxzyB0qIKz5bB-MWvqPA2SU1N82qfdVVqRglEtiFMYYidwePToqWUUyUsEDOfZdptvK4FjfLqFJqCeicxyH5VR8akWnKlSdlHt0iBWMLn5Pgwro-Xli_jRqtYFm-LylbePbkaR3qGbIdsp7LDOsAqe7AChjbzwlmwuZcwOYrpEDTwbgSxvFUP6q98QnZEq393vODL-wgL9VZiuNMu1E1I-N6QOKGmlBGz7hOzTZ-NN5ScQc7s\"}}",
+                            "name": "authenticate role middleware allows admins"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk3Ljk0MzMxLCJuYmYiOjE2ODAxMzA0OTcuOTQzMzEsImV4cCI6MTY4MDEzNDA5Ny45NDMyMjksInVzZXJfdXVpZCI6IjE0Yzc5MzYyLTQ3NGYtNDI3My05NWMyLTUxNTY4ZjM3Y2U3MSIsInJvbGVzIjpbImFkbWluIl19.rG1IYxHYdS9Rw6vDqz4D5rPrF8sU7CPR_TjfGcbL7H3JnDh9eb6C3LOTmg9Y60OSXLwZH23R-zjCx9ImblkwIsWJ1lh2P_WKgbjD4T6B4ZaBW4meu7LaLf15UZ31IcgG0IDj-SbAxZJfX8JSbwKeZTc9oDQzqAvM-iqvq8pqlVmUZaZYoEftDiObb4uQ1Qyzl3OsxExY1WRoIy9DoiOThdFZbo3p1zSEIkf_P9psBusnt7dfzIVbvkhTJNIBzQ74YjsvyLLd0BuqzdWTSV4HrL7NoO2XwgdPQGjaJ3FpjYCmwqsAP-mOZyuxBf_5O7P2FRVOilY9FooWWNBuqJq6hP018AGjgOGOX-LGj1pkwcOmpOBRB8Jccaq7HbpK1bZGN0aTpAUb-svW2jljmhXHf4hrvrB3-M_QEVRwpCWc3m6uyYyJzOnJESHsGQU10hbMGnkPHLnXFRQyfoUJ8wZcnY66fBIX1qA-xJvfajIaZAPEv4j_TU5SAMj6m8S-6H2BhWYU60JtMwwyajU9YAjQbOXiabkKWfAPkYdp_y3l52CY7GVS1_75XnnoCzkoFD-vX2GOfhgxzavDHw4zURQ0lgm64IrZnzFy6WHvf0nl210fChI65-aPsmwjUdgidKgfasrplX2sRmYxg9TobNoXg9CNL1mYBxWjxTeJ35k3fX8\"}}",
+                            "name": "login returns token on success"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"Failed to authenticate user\"}]}",
+                            "name": "login fails for users"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"Failed to authenticate user\"}]}",
+                            "name": "login fails with incorrect email"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"Failed to authenticate user\"}]}",
+                            "name": "login fails with incorrect password"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 422,
+                            "body": "{\"errors\":[{\"status\":\"422\",\"title\":\"Unprocessable Entity\",\"description\":\"The email field must be a valid email address.\"}]}",
+                            "name": "login fails with invalid email"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 422,
+                            "body": "{\"errors\":[{\"status\":\"422\",\"title\":\"Unprocessable Entity\",\"description\":\"The password field is required.\"}]}",
+                            "name": "login fails with missing password"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "description": "",
+            "item": [
+                {
+                    "name": "User token claims are compliant.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"mertz.verona@example.com\",\"password\":\"uvg|}4qB<)>Q^U#\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjUyNDcsIm5iZiI6MTY4MDEzMDQ5OC41MjQ3LCJleHAiOjE2ODAxMzQwOTguNTI0NjE5LCJ1c2VyX3V1aWQiOiI1YTU2Y2RiZC00MmY4LTRjOWQtYmMzMS05NzQwZjQyYTFmMGYiLCJyb2xlcyI6WyJ1c2VyIl19.fjo_uWnMdVwtxlpI3mAaMlOxhTwVcyaW_Q2XKuzk3dK30kLgpghTW470LHPYcXD6VKesVSoHLA6N4NuzYI3To_0mk3g6alu8ImtcdkyfjQzFBD7bOWEI4QeFDvU4Uxumh82CJFVgSEsOcjOfZ1BeHp7NoRDqMzzqlca4p_JK3P2Rf6YPjJ0JbbRK-JhFSbWSStoW0N7a5OEjwcVjH1PxFReG93FPFS5hX6TJp1_E2m2D0wzSWvNPWarNg7PN6CCFqAEDcbVhDUJ0Y2VjzyFYehqRrTxHZjG4m3kA_b3Wfeo5dJ3TzLRhHHXPL64lM20EgIGforcYCSJmv1ZbECmLTDU-edMBxa7ptXzY8WG0wv3y6Z_7712iOEMNs2EDKe0_K9Dg0XMCkWyq07x9hhl2QmZ-1PKqjJf5Rz5H-ewMe_OTJX9SKTL1O3eKl4HnJg85qdCMDaC5g2ngzMPebQiPo2sh0uEHykB2v3TI5EkMbWrxBTiomRlFAfROWlavgbmTE4t7lnru3gqXOU-lloFNNzR0ovxTWqMGlw0YrjsueRHZeVcClpUmFScKPlHdiBQiMphjmdjl4xJ-6qsCUn5R26BTZHiQgqlFSMJ3KVIoLbTIqV1xNUJUi28Xtmtzg-_mBDuT5DXEjgnnXwlR_21KYHGyHgLFy8s3wB3DNvxPF9I\"}}",
+                            "name": "authenticate role middleware disallows users when expecting admins"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjU2MTMwNSwibmJmIjoxNjgwMTMwNDk5LjU2MTMwNSwiZXhwIjoxNjgwMTM0MDk5LjU2MTIxNywidXNlcl91dWlkIjoiM2I0NmRiZTUtYmE2Yi00Y2ZlLWIxNzItYTM5MmJhOTNlY2FiIiwicm9sZXMiOlsidXNlciJdfQ.xu53Y_bvs1hnY3pcYw1RRXssmMRsd3HWMkrw-CLBHCIIV8MXTJFW_0Hx-giEGFMrhL7Agu9DL7XVCksV7N0KDl3K_O26y4lSkQt4thjZQqjPfeX5HBgPAddZ4fHz2L5SvtAcPKLrhpI78IDLMSoGfrMuH5EbKTeSl2_V2fVenVX-ORvELo8Aq6dZsBiQpus-zy58Q2C9j4WzV49PpwLJyXo_Mz24p4KGh7gAzxCHeTdvTHdHBOd7WhvFBDN-07l-dk_NXXhJuy8-9akrlQobV_tnlOZx8UDbnZnU20vdumZ52-AAipnaebCC8bVS1pyLlMw5y6GS9qEo6kmchjrxczT9qZW44wbAAg5ejd_rP8UcZvtgzQw8dfGcIHzcTAMtBrprKK7EXuCM-ucPJyrzvdwNSlRJu-iP4ja9UqHEI2RKuJStOYzuHCt50BI85-XCetuKxIsjHdBrCmVqM_VUbwX6U1cl4oJgG1BVbsdj4AhioU6kFl-AYYfdG25xEUJSM2cfigBQLi6APFXhODi2DeocmGyJq06q1A2LbcFtQJGs8pCHp15iizMqPmblwgjAslUN-k5DZi4_FnFhhSyHvuVsgLbaTcN2s1YgPXEDj45HfjosLrO7lTeLHwWog1A1Q4rTBVp6X4mtI6k-KrVloVoEBO530g-6u1ez_eH94pE\"}}",
+                            "name": "login returns token on success"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjA0MjU4OSwibmJmIjoxNjgwMTMwNDk5LjA0MjU4OSwiZXhwIjoxNjgwMTM0MDk5LjA0MjUsInVzZXJfdXVpZCI6IjM2N2RkMGVkLWNlMTUtNDAzNS1iMGU4LWRhZmI1NDljMzYzNyIsInJvbGVzIjpbInVzZXIiXX0.MzMIfZ4eEMyBKrOmBV7TT0QQfeLXCBqn0MW8JQn5NAYXOLYg92Mk9ywrOdT-mb2E2Nn30KhqmTxJUiKS2W__gXK_rH0UhZcFxBtGujNxnE7A9pO_mtfBO5_weWVtG3_0k8Td3ihgjwRtgpAUWOGgFQF_LsSUXwIwVB8jLhb5Xb3UeRdLMsfHu7vRkMmZrNL5AY_iAEp_ARFotWj6PlUdbFmX48QfGU2Oood0WlBFqtGWM5hdd_skunEyVu-K2x3DBHaSlvRINBbktj3l6Bs3OvKjwSnDP0D1jENxDeVr5YksJ-8Vp0A7GdpmKaBr56tKk6nqbrJguGqFFwnY2SdXuzuk9Efr7zCBG6EE9RtbbGvbgJjmRfK93IxH7yby6Yz8wwSxuq1MoRMB-WJHdGsbz11qdzL3jQEa0tMGHMX3SdrWggEXM6BMWB62h99p7gdGbCKZFHuhn7mtzct4kXYny8Q8Nr5R1n3ge61q5LXSCSjq3bNt4IELt0GTO8c4_jLPbU5fXsyHKlahLwf4rr7sryNJqyQ0XKlfxLabcxEVe3RzTovKxWb018122584l3WmpSm0I0PP4B6yPKmSp4AIuMFxg77wBdpcK3IjDQf-jc8SZFTziqNSCmTmLKzVGovJWvzxmNJhJNkSH_6G-0QMMPT3Tv6BqyqmOkGv4TXw7Uk\"}}",
+                            "name": "user can log into account"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjcwMzQyMSwibmJmIjoxNjgwMTMwNDk5LjcwMzQyMSwiZXhwIjoxNjgwMTM0MDk5LjcwMzMwOSwidXNlcl91dWlkIjoiMWJhMjFiMTgtMjVkOS00MzNiLTliZDYtY2IwN2VlZWM4NmM2Iiwicm9sZXMiOlsidXNlciJdfQ.Wy-XdMcl3O9flkC_cclqLpI5FddouYAsiBVJY8UzgMyCka_4s-jX7--W6RbQt2LMsC7pxtnYlOLcZk2ub5su2pwhUr6i0ia1nTWxkIzm9M1kT0CjXSn2X6LgQHuFdOC_BDPZOW__S_IX8t1DTPaFMjQcUjt6wy6SjmqhxUhYueNDp95-gCfRmorPXUApNWhMG6eUVm3exRNh4Qngf9H95qJeChHfgqpZyhBvGtGngdDpOWLd1jHLLJJ-8rHK4Egnhfx50OeGInnKWNJfPeLNRJwS-1vixsWNUErmyrcd24iaryz9599uO0JKbcDj7YtNCuMLMZl_RS3oV7AopJWdrZKKXUwmBuSyXIHZTnXZQd68XwKvkqOowpTuyfnCiS-6Bp77NaQzqbPQ3WL6lHFZRkb1ITN4busHa0CIxI6VHss2adQLNwHryVWNt06MQJlYWn4j1C52OzJtjzlbNyN_rA6DtUMvWJzseQXefi61N-9bz32B_VFMIGF8-fV1zzlcr6lmNf2qcMKtDj-RTnbZXo8DkcPU9f2Uf70b-gR6Hl1zUEZBGlwdVNA-33UzJOATPRH_hYCW4yilWelxDq_Gd-KgeIf4A4OsATBsk0aLOsALrXpV_7t_oMKRLERL6-U4SAJ3BS86QBQTv-U1wNDDQQU0h-gNs6buD5vUkCiwDnU\"}}",
+                            "name": "user token claims are compliant"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"Failed to authenticate user\"}]}",
+                            "name": "login fails for admins"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"Failed to authenticate user\"}]}",
+                            "name": "login fails with incorrect email"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"errors\":[{\"status\":\"401\",\"title\":\"Failed to authenticate user\"}]}",
+                            "name": "login fails with incorrect password"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 422,
+                            "body": "{\"errors\":[{\"status\":\"422\",\"title\":\"Unprocessable Entity\",\"description\":\"The email field must be a valid email address.\"}]}",
+                            "name": "login fails with invalid email"
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": [
+                                        "no-cache, private"
+                                    ]
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": [
+                                        "application\/json"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": [
+                                        "60"
+                                    ]
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": [
+                                        "59"
+                                    ]
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "code": 422,
+                            "body": "{\"errors\":[{\"status\":\"422\",\"title\":\"Unprocessable Entity\",\"description\":\"The password field is required.\"}]}",
+                            "name": "login fails with missing password"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

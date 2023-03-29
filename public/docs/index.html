@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.17.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.17.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-admin" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="admin">
+                    <a href="#admin">Admin</a>
+                </li>
+                                    <ul id="tocify-subheader-admin" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="admin-POSTapi-v1-admin-login">
+                                <a href="#admin-POSTapi-v1-admin-login">Login returns token on success.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-user" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="user">
+                    <a href="#user">User</a>
+                </li>
+                                    <ul id="tocify-subheader-user" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user-login">
+                                <a href="#user-POSTapi-v1-user-login">User token claims are compliant.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: March 29, 2023</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://localhost</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="admin">Admin</h1>
+
+    
+
+                                <h2 id="admin-POSTapi-v1-admin-login">Login returns token on success.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-admin-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/admin/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"rosalinda22@example.com\",
+    \"password\": \"yO5\'iD@t7U\\/X-]\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/admin/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "rosalinda22@example.com",
+    "password": "yO5'iD@t7U\/X-]"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-admin-login">
+            <blockquote>
+            <p>Example response (200, 200, admin can log into account):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk3LjQ1MjcxOCwibmJmIjoxNjgwMTMwNDk3LjQ1MjcxOCwiZXhwIjoxNjgwMTM0MDk3LjQ1MjY0MSwidXNlcl91dWlkIjoiZmMyNTg0ZjMtM2IzZi00MjRjLTk0YmMtYjAwYjkxOWNkZGUyIiwicm9sZXMiOlsiYWRtaW4iXX0.Vr6xwyrolEjoCqFRdrNy5GouoOs-neImxrIPfIFyHgFXALm4ONSaxoZnyUcefW-_SZ_6e5G0tsKwog5K0y9Ng-FKXMVRSiqMmRD47lcl-t30d2x57TFTC305mnftutElnI4PSpn8xrQAJ6o-B4GFmgW3ABcb0IfYn9-D_gf44d9wcG0zxpqi_StwPHqMrE0ZMD7IAUTV1Vr_-KJXdtY01CH05FtWUR060LAxZ0aLbj6wOZHvGzIwOF1QH9Ya5f4IgWNye1TSkIllNLr4Pg7exCtnUiawosyjwHeeGqIt90ABBo0fwvlIxoiG4o4uY7xyAUPdofBNl8Xbglq-lJooTI_glDaBpWfKTscXxXhOQ2Tk21O4B1boQMozUDfVZ-djCuxfnf5wLHRFrR94--vK1hZItDL504-LYnHKt1IVbp-Dahi_RXGBU4vSkTGUIBkCj1lWN9YeIat085C6oYBOLOSL45oRANGt9EVlSMTpETvLMDClTSoTgFEkp7IVT7CU-ilxt1z76dU9giuV1eSPFnNbSNPooABYAa8f5EQUxnhWQ4pIfbnA7x6xjKw_HbFhwxisRtSd0fWcwhhVI_woai2fIoIfayPmFff4wapgvfeaRtZoBUCkym6clyFIaDupaGfnVlJ5MMbZIsuXwWX3Zwh9BNTSWD3r9GQEhIiUhdo&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, 200, admin token claims is compliant):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjA5MjI4NSwibmJmIjoxNjgwMTMwNDk4LjA5MjI4NSwiZXhwIjoxNjgwMTM0MDk4LjA5MjE3NCwidXNlcl91dWlkIjoiYTdjNTgwOTQtMTBmYS00NGM5LTliOTctNWIyZmMyNjNjNDgzIiwicm9sZXMiOlsiYWRtaW4iXX0.KCUHUSjb9zkQqUl2k-uqpx0yi9txMdqhQTTJiJraCzfuKFg21wELRhbH0igx36p6HpQCBotwsmwXiJA4cGKcY6WmCtZRI4IfZzfSmZ65U05YeatIM7z_UU65uq6dhD4tbOejSHvn6KzTPVxz4rVlNXUmAIuUXrgB6jm5RbRzcb14gmToE7V-PelMO9exTBMnh46LdiK2ik7kgHplnteWmKdY1pUPk_giZXOAtEHzwsy_unos80X7F3Fs-FNmwESsGe0kWleu58VSOqScP_SLozF1wiwC_ZP66uBEr4G4sMzCN43Ot3iX0Or18AEi-MoIwqRmKd9uYWNWItDmzLh7uwp0m9mDwGs5FHfB0Adm8bNCrXn08IoctnZ7aArM25tSvYbsNBFlDaSJ9Kh97PAdDGjWIJszQzcmMYlGcpvfW8xykGhujuN68QV96oqDpk6bAHLT6vhB2xit_JiLEkjN4yw19rFRFagcmLdGeRbdHQ6kEkj94_f-bscewIneuaA0Z1_63AdVAH3FHukvv2oCd7hyDIg5UTfm7W3olaoUGJdMwhYk0gQ3lNxqCT3gdxTUgqP_8RYlVsDeLrdngv1Yikth8rRuHxSEiyiJDYQpc23CjrRr1_U37JQ9rVMbTog0pC_IMejZ7-wKnJdmJdRHNqMGnLjdn3uNL_8BRuLuT40&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, 200, api guard can resolve users):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjY4MTQ3MywibmJmIjoxNjgwMTMwNDk4LjY4MTQ3MywiZXhwIjoxNjgwMTM0MDk4LjY4MTM3LCJ1c2VyX3V1aWQiOiJjMDUwYWVmNC1lMTk4LTQ4ZjEtYjllMS1hNzcyNmNhNWVhMTYiLCJyb2xlcyI6WyJhZG1pbiJdfQ.J0xAKeuQx9bSO47uYn5Zamjff_7ZwN-N7gV0AeFbBGqimqbLHVqyxl1nlcH3OUmTl4QwkMJ8VgMZogNI2CcH6Im9JNS8CgqlXRImJmnyQcGtaGSFqq2gAGwAqHY4j-vIxW6-CMGz92XQ806Y1wl07IpoZV_3ATpgIptCMJwKOR_40QKFPnTh3wxdd3YyVR0YGEwfJuYoaTRt58iN6c-5Yo7mzp53L4v_0SpV4BlmcjazhNgIJ93eDNYWX38OVkNEPvkMgA8vWVqhUnRDr3sc48NWfZNA9G7FGdQTH0TH-rr4TIgWSEs8IVTV3Xm5mWUFRz-y4-xUhxHvPR4EtGmRSMqb-9vwLTH2OR7MBqPh4vBmkYrRv5rEoHj1cXbxbSBUBesaWN_4iW3wcNIatuEhZtUfvap1eXnLzOSZp8ScE1PUdbBWJGk3Osie9r2v43LZzbTGHzUbQtHMYsqCs3xe9LHfS-J2atNxcYVsV1GkdwQ8diDVpC4B0QcZptBS9KZuFGdpDR3_ZW6rRhHJNtJrLA477UPmKEXFm4OqLXHOUiZi2W-1vmfxhwk85S9gyArM0ASlSJKshQ6vnQvxQ3lsL4XNsjObLaF68ANzi4sf4I1HeKdMljfgzJPDadh_qVeVAQlycg783VUiWBvAOsQQE0B6CxeQGS2F78k5ak_VD6M&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, 200, authenticate role middleware allows admins):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjI2MTg3OCwibmJmIjoxNjgwMTMwNDk4LjI2MTg3OCwiZXhwIjoxNjgwMTM0MDk4LjI2MTc2NSwidXNlcl91dWlkIjoiYTNmMjViODktZmRjNy00ZGQ5LThjZjctMDU3ZGMyY2UxZTNjIiwicm9sZXMiOlsiYWRtaW4iXX0.ffDKAWLpn2ezZl8ovDskG3Tpts-A535zz7xnYTQNDy3hBfrwZyWifQ7vC5gc7Q3_ySBP37jWDi24-qRa5RNAyXCMsIIsmyUk2egz2aAnEyibIDkX9u7hWiahfgWYqs04a_kh3QAdhpXtp1v5U2JO_LkVh9Se5B95hV6V-kMxBmu2DfSSfFjjObqREMv10gQair-E6mLQ6QuxoQSWSD7oC1lnf-Kd9UydPfiDgg3FGjMrszbnfIFjf4Y5WXJ7ygqwzVB9mzrRgd65jKb9UBxJMxyJmM9UMegkMU7-7U60FxFtZ6t-2oDr9ZP2LJX2r3U6AXhDHXfxTgnI2PjyS-zais_xh9IVHcKYeNnzmyGbvDcezXrsY2tkRDg_LEfS895kSchN5P150cgsabqPIlvRKwVB1ONj9si_BdXzzu97SWJLcWePR4sZ21ePjvMxzyB0qIKz5bB-MWvqPA2SU1N82qfdVVqRglEtiFMYYidwePToqWUUyUsEDOfZdptvK4FjfLqFJqCeicxyH5VR8akWnKlSdlHt0iBWMLn5Pgwro-Xli_jRqtYFm-LylbePbkaR3qGbIdsp7LDOsAqe7AChjbzwlmwuZcwOYrpEDTwbgSxvFUP6q98QnZEq393vODL-wgL9VZiuNMu1E1I-N6QOKGmlBGz7hOzTZ-NN5ScQc7s&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, 200, login returns token on success):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk3Ljk0MzMxLCJuYmYiOjE2ODAxMzA0OTcuOTQzMzEsImV4cCI6MTY4MDEzNDA5Ny45NDMyMjksInVzZXJfdXVpZCI6IjE0Yzc5MzYyLTQ3NGYtNDI3My05NWMyLTUxNTY4ZjM3Y2U3MSIsInJvbGVzIjpbImFkbWluIl19.rG1IYxHYdS9Rw6vDqz4D5rPrF8sU7CPR_TjfGcbL7H3JnDh9eb6C3LOTmg9Y60OSXLwZH23R-zjCx9ImblkwIsWJ1lh2P_WKgbjD4T6B4ZaBW4meu7LaLf15UZ31IcgG0IDj-SbAxZJfX8JSbwKeZTc9oDQzqAvM-iqvq8pqlVmUZaZYoEftDiObb4uQ1Qyzl3OsxExY1WRoIy9DoiOThdFZbo3p1zSEIkf_P9psBusnt7dfzIVbvkhTJNIBzQ74YjsvyLLd0BuqzdWTSV4HrL7NoO2XwgdPQGjaJ3FpjYCmwqsAP-mOZyuxBf_5O7P2FRVOilY9FooWWNBuqJq6hP018AGjgOGOX-LGj1pkwcOmpOBRB8Jccaq7HbpK1bZGN0aTpAUb-svW2jljmhXHf4hrvrB3-M_QEVRwpCWc3m6uyYyJzOnJESHsGQU10hbMGnkPHLnXFRQyfoUJ8wZcnY66fBIX1qA-xJvfajIaZAPEv4j_TU5SAMj6m8S-6H2BhWYU60JtMwwyajU9YAjQbOXiabkKWfAPkYdp_y3l52CY7GVS1_75XnnoCzkoFD-vX2GOfhgxzavDHw4zURQ0lgm64IrZnzFy6WHvf0nl210fChI65-aPsmwjUdgidKgfasrplX2sRmYxg9TobNoXg9CNL1mYBxWjxTeJ35k3fX8&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, 401, login fails for users):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;401&quot;,
+            &quot;title&quot;: &quot;Failed to authenticate user&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, 401, login fails with incorrect email):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;401&quot;,
+            &quot;title&quot;: &quot;Failed to authenticate user&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, 401, login fails with incorrect password):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;401&quot;,
+            &quot;title&quot;: &quot;Failed to authenticate user&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, 422, login fails with invalid email):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;422&quot;,
+            &quot;title&quot;: &quot;Unprocessable Entity&quot;,
+            &quot;description&quot;: &quot;The email field must be a valid email address.&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, 422, login fails with missing password):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;422&quot;,
+            &quot;title&quot;: &quot;Unprocessable Entity&quot;,
+            &quot;description&quot;: &quot;The password field is required.&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-admin-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-admin-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-admin-login" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-admin-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-admin-login"></code></pre>
+</span>
+<form id="form-POSTapi-v1-admin-login" data-method="POST"
+      data-path="api/v1/admin/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-admin-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-admin-login"
+                    onclick="tryItOut('POSTapi-v1-admin-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-admin-login"
+                    onclick="cancelTryOut('POSTapi-v1-admin-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-admin-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/admin/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-v1-admin-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-v1-admin-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="email"                data-endpoint="POSTapi-v1-admin-login"
+               value="rosalinda22@example.com"
+               data-component="body">
+    <br>
+<p>The email of the user Example: <code>rosalinda22@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="password"                data-endpoint="POSTapi-v1-admin-login"
+               value="yO5'iD@t7U/X-]"
+               data-component="body">
+    <br>
+<p>Example: <code>yO5'iD@t7U/X-]</code></p>
+        </div>
+        </form>
+
+                <h1 id="user">User</h1>
+
+    
+
+                                <h2 id="user-POSTapi-v1-user-login">User token claims are compliant.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-user-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/user/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"mertz.verona@example.com\",
+    \"password\": \"uvg|}4qB&lt;)&gt;Q^U#\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/user/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "mertz.verona@example.com",
+    "password": "uvg|}4qB&lt;)&gt;Q^U#"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-user-login">
+            <blockquote>
+            <p>Example response (200, 200, authenticate role middleware disallows users when expecting admins):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk4LjUyNDcsIm5iZiI6MTY4MDEzMDQ5OC41MjQ3LCJleHAiOjE2ODAxMzQwOTguNTI0NjE5LCJ1c2VyX3V1aWQiOiI1YTU2Y2RiZC00MmY4LTRjOWQtYmMzMS05NzQwZjQyYTFmMGYiLCJyb2xlcyI6WyJ1c2VyIl19.fjo_uWnMdVwtxlpI3mAaMlOxhTwVcyaW_Q2XKuzk3dK30kLgpghTW470LHPYcXD6VKesVSoHLA6N4NuzYI3To_0mk3g6alu8ImtcdkyfjQzFBD7bOWEI4QeFDvU4Uxumh82CJFVgSEsOcjOfZ1BeHp7NoRDqMzzqlca4p_JK3P2Rf6YPjJ0JbbRK-JhFSbWSStoW0N7a5OEjwcVjH1PxFReG93FPFS5hX6TJp1_E2m2D0wzSWvNPWarNg7PN6CCFqAEDcbVhDUJ0Y2VjzyFYehqRrTxHZjG4m3kA_b3Wfeo5dJ3TzLRhHHXPL64lM20EgIGforcYCSJmv1ZbECmLTDU-edMBxa7ptXzY8WG0wv3y6Z_7712iOEMNs2EDKe0_K9Dg0XMCkWyq07x9hhl2QmZ-1PKqjJf5Rz5H-ewMe_OTJX9SKTL1O3eKl4HnJg85qdCMDaC5g2ngzMPebQiPo2sh0uEHykB2v3TI5EkMbWrxBTiomRlFAfROWlavgbmTE4t7lnru3gqXOU-lloFNNzR0ovxTWqMGlw0YrjsueRHZeVcClpUmFScKPlHdiBQiMphjmdjl4xJ-6qsCUn5R26BTZHiQgqlFSMJ3KVIoLbTIqV1xNUJUi28Xtmtzg-_mBDuT5DXEjgnnXwlR_21KYHGyHgLFy8s3wB3DNvxPF9I&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, 200, login returns token on success):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjU2MTMwNSwibmJmIjoxNjgwMTMwNDk5LjU2MTMwNSwiZXhwIjoxNjgwMTM0MDk5LjU2MTIxNywidXNlcl91dWlkIjoiM2I0NmRiZTUtYmE2Yi00Y2ZlLWIxNzItYTM5MmJhOTNlY2FiIiwicm9sZXMiOlsidXNlciJdfQ.xu53Y_bvs1hnY3pcYw1RRXssmMRsd3HWMkrw-CLBHCIIV8MXTJFW_0Hx-giEGFMrhL7Agu9DL7XVCksV7N0KDl3K_O26y4lSkQt4thjZQqjPfeX5HBgPAddZ4fHz2L5SvtAcPKLrhpI78IDLMSoGfrMuH5EbKTeSl2_V2fVenVX-ORvELo8Aq6dZsBiQpus-zy58Q2C9j4WzV49PpwLJyXo_Mz24p4KGh7gAzxCHeTdvTHdHBOd7WhvFBDN-07l-dk_NXXhJuy8-9akrlQobV_tnlOZx8UDbnZnU20vdumZ52-AAipnaebCC8bVS1pyLlMw5y6GS9qEo6kmchjrxczT9qZW44wbAAg5ejd_rP8UcZvtgzQw8dfGcIHzcTAMtBrprKK7EXuCM-ucPJyrzvdwNSlRJu-iP4ja9UqHEI2RKuJStOYzuHCt50BI85-XCetuKxIsjHdBrCmVqM_VUbwX6U1cl4oJgG1BVbsdj4AhioU6kFl-AYYfdG25xEUJSM2cfigBQLi6APFXhODi2DeocmGyJq06q1A2LbcFtQJGs8pCHp15iizMqPmblwgjAslUN-k5DZi4_FnFhhSyHvuVsgLbaTcN2s1YgPXEDj45HfjosLrO7lTeLHwWog1A1Q4rTBVp6X4mtI6k-KrVloVoEBO530g-6u1ez_eH94pE&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, 200, user can log into account):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjA0MjU4OSwibmJmIjoxNjgwMTMwNDk5LjA0MjU4OSwiZXhwIjoxNjgwMTM0MDk5LjA0MjUsInVzZXJfdXVpZCI6IjM2N2RkMGVkLWNlMTUtNDAzNS1iMGU4LWRhZmI1NDljMzYzNyIsInJvbGVzIjpbInVzZXIiXX0.MzMIfZ4eEMyBKrOmBV7TT0QQfeLXCBqn0MW8JQn5NAYXOLYg92Mk9ywrOdT-mb2E2Nn30KhqmTxJUiKS2W__gXK_rH0UhZcFxBtGujNxnE7A9pO_mtfBO5_weWVtG3_0k8Td3ihgjwRtgpAUWOGgFQF_LsSUXwIwVB8jLhb5Xb3UeRdLMsfHu7vRkMmZrNL5AY_iAEp_ARFotWj6PlUdbFmX48QfGU2Oood0WlBFqtGWM5hdd_skunEyVu-K2x3DBHaSlvRINBbktj3l6Bs3OvKjwSnDP0D1jENxDeVr5YksJ-8Vp0A7GdpmKaBr56tKk6nqbrJguGqFFwnY2SdXuzuk9Efr7zCBG6EE9RtbbGvbgJjmRfK93IxH7yby6Yz8wwSxuq1MoRMB-WJHdGsbz11qdzL3jQEa0tMGHMX3SdrWggEXM6BMWB62h99p7gdGbCKZFHuhn7mtzct4kXYny8Q8Nr5R1n3ge61q5LXSCSjq3bNt4IELt0GTO8c4_jLPbU5fXsyHKlahLwf4rr7sryNJqyQ0XKlfxLabcxEVe3RzTovKxWb018122584l3WmpSm0I0PP4B6yPKmSp4AIuMFxg77wBdpcK3IjDQf-jc8SZFTziqNSCmTmLKzVGovJWvzxmNJhJNkSH_6G-0QMMPT3Tv6BqyqmOkGv4TXw7Uk&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, 200, user token claims are compliant):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjgwMTMwNDk5LjcwMzQyMSwibmJmIjoxNjgwMTMwNDk5LjcwMzQyMSwiZXhwIjoxNjgwMTM0MDk5LjcwMzMwOSwidXNlcl91dWlkIjoiMWJhMjFiMTgtMjVkOS00MzNiLTliZDYtY2IwN2VlZWM4NmM2Iiwicm9sZXMiOlsidXNlciJdfQ.Wy-XdMcl3O9flkC_cclqLpI5FddouYAsiBVJY8UzgMyCka_4s-jX7--W6RbQt2LMsC7pxtnYlOLcZk2ub5su2pwhUr6i0ia1nTWxkIzm9M1kT0CjXSn2X6LgQHuFdOC_BDPZOW__S_IX8t1DTPaFMjQcUjt6wy6SjmqhxUhYueNDp95-gCfRmorPXUApNWhMG6eUVm3exRNh4Qngf9H95qJeChHfgqpZyhBvGtGngdDpOWLd1jHLLJJ-8rHK4Egnhfx50OeGInnKWNJfPeLNRJwS-1vixsWNUErmyrcd24iaryz9599uO0JKbcDj7YtNCuMLMZl_RS3oV7AopJWdrZKKXUwmBuSyXIHZTnXZQd68XwKvkqOowpTuyfnCiS-6Bp77NaQzqbPQ3WL6lHFZRkb1ITN4busHa0CIxI6VHss2adQLNwHryVWNt06MQJlYWn4j1C52OzJtjzlbNyN_rA6DtUMvWJzseQXefi61N-9bz32B_VFMIGF8-fV1zzlcr6lmNf2qcMKtDj-RTnbZXo8DkcPU9f2Uf70b-gR6Hl1zUEZBGlwdVNA-33UzJOATPRH_hYCW4yilWelxDq_Gd-KgeIf4A4OsATBsk0aLOsALrXpV_7t_oMKRLERL6-U4SAJ3BS86QBQTv-U1wNDDQQU0h-gNs6buD5vUkCiwDnU&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, 401, login fails for admins):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;401&quot;,
+            &quot;title&quot;: &quot;Failed to authenticate user&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, 401, login fails with incorrect email):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;401&quot;,
+            &quot;title&quot;: &quot;Failed to authenticate user&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, 401, login fails with incorrect password):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;401&quot;,
+            &quot;title&quot;: &quot;Failed to authenticate user&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, 422, login fails with invalid email):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;422&quot;,
+            &quot;title&quot;: &quot;Unprocessable Entity&quot;,
+            &quot;description&quot;: &quot;The email field must be a valid email address.&quot;
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, 422, login fails with missing password):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: &quot;422&quot;,
+            &quot;title&quot;: &quot;Unprocessable Entity&quot;,
+            &quot;description&quot;: &quot;The password field is required.&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-user-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-user-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-user-login" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-user-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-user-login"></code></pre>
+</span>
+<form id="form-POSTapi-v1-user-login" data-method="POST"
+      data-path="api/v1/user/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-user-login"
+                    onclick="tryItOut('POSTapi-v1-user-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-user-login"
+                    onclick="cancelTryOut('POSTapi-v1-user-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-user-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/user/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-v1-user-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-v1-user-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="email"                data-endpoint="POSTapi-v1-user-login"
+               value="mertz.verona@example.com"
+               data-component="body">
+    <br>
+<p>The email of the user Example: <code>mertz.verona@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="password"                data-endpoint="POSTapi-v1-user-login"
+               value="uvg|}4qB<)>Q^U#"
+               data-component="body">
+    <br>
+<p>Example: <code>uvg|}4qB&lt;)&gt;Q^U#</code></p>
+        </div>
+        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>
