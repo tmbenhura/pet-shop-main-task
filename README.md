@@ -1,5 +1,5 @@
 
-## About Submission
+## Pet Shop API Submission
 
 Submission has the following:
 - Implementation of JWT Authentication
