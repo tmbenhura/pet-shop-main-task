@@ -66,6 +66,8 @@
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('jwt-signing-key.pem.example', 'jwt-signing-key.pem');\"",
+            "@php -r \"file_exists('.env') || copy('jwt-signing-key.pem.pub.example', 'jwt-signing-key.pem.pub');\"",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
