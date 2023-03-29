@@ -121,6 +121,34 @@ class AdminTest extends TestCase
     }
 
     /**
+     * Login fails with missing password.
+     */
+    public function test_login_fails_with_missing_password(): void
+    {
+        $user = User::factory()->create(
+            ['is_admin' => true]
+        );
+
+        $response = $this->postJson(
+            route('api.admin.login'),
+            ['email' => $user->email, 'password' => '']
+        );
+
+        $response->assertStatus(422);
+        $response->assertJson(
+            [
+                'errors' => [
+                    [
+                        'status' => '422',
+                        'title' => 'Unprocessable Entity',
+                        'description' => 'The password field is required.',
+                    ]
+                ]
+            ]
+        );
+    }
+
+    /**
      * Login fails with incorrect password.
      */
     public function test_login_fails_with_incorrect_password(): void
