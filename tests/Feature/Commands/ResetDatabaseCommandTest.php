@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Auth;
+namespace Tests\Feature\Commands;
 
 use Tests\TestCase;
 use Illuminate\Console\Scheduling\Event;

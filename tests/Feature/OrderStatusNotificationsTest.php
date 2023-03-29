@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Seeders;
+namespace Tests\Feature;
 
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
