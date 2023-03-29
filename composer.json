@@ -58,6 +58,9 @@
         "docs": [
             "@php artisan scribe:generate"
         ],
+        "jwt-signing-key": [
+            "ssh-keygen -t rsa -b 4096 -m PEM -f jwt-signing-key.pem"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
